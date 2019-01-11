@@ -3,10 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>test Document</title>
+    <title>test</title>
+
+    <style type="text/css">
+        .blink_class{
+            -webkit-animation:blink 1.0s step-end infinite alternate;
+            -moz-animation:blink 1.0s step-end infinite alternate;
+            animation:blink 1.0s step-end infinite alternate;
+        }
+        /* 点滅 */
+        @-webkit-keyframes blink{
+            34%,66%,100% {opacity:0;}
+            0%,33%,67%,99% {opacity:1;}
+        }
+        @-moz-keyframes blink{
+            34%,66%,100% {opacity:0;}
+            0%,33%,67%,99% {opacity:1;}
+        }
+        @keyframes blink{
+            34%,66%,100% {opacity:0;}
+            0%,33%,67%,99% {opacity:1;}
+        }
+    </style>
 </head>
-<body>
-    test てすとだよ<br>
+<body style="background-color:#000000; color: #FFFFFF;">
+    <iframe src="file:///C:\Gravity\Ragnarok\BGM\01.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+    <audio id="player" autoplay loop>
+            <source src="file:///C:\Gravity\Ragnarok\BGM\01.mp3" type="audio/mp3">
+    </audio>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 style="text-align:center" class="blink_class">俺さんのホームページにようこそ！</h1>
+    <br>
+    <p style="text-align:center">
+        あなたは<img src="./count.gif" alt="counter">人目の訪問者です！<br>
+        ｓｏｒｒｙ　ｔｈｉｓｐａｇｅ　ｊａｐａｎｅｓｅ　ｏｎｌｙ<br>
+    </p>    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p style="text-align:center">
+        
+        
+        <img src="./kouji.png" alt="工事中！">　
+        <img src="./kouji.png" alt="工事中！">　
+        <img src="./kouji.png" alt="工事中！">　
+    
+    </p>
 </body>
 </html>
