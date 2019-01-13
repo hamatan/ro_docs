@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#jRO を録画してSNSで公開する 2/2</title>
+</head>
+<body>
+    <h1>#jRO を録画してSNSで公開する 2/2</h1>
+    特に注釈が無い場合 ROのウィンドウサイズ 1152x864 を撮影した動画を前提に書いてあります<br>
+    Twitterの場合、動画の再生時間は2分以内に(正確には2分19秒だかを超えると投稿に失敗する)<br>
+    <br>
+    <h2 id="aviutl">編集 / エンコード</h2>
+    <p style="padding-left:1em;">
+        録画したファイルを aviutl で読み込んで編集、エンコードを行う<br>
+        画面の切り抜きや縮小なんかもここで行う<br>
+        PCの性能によるが、エンコードは再生時間の2倍位の時間がかかる<br>
+        <strong>aviutlのプラグインや設定が秘伝のタレ化しやすいので注意する</strong><br>
+        <br>
+        <a href="#aviutl_install">1-2 インストール</a><br>
+        <a href="#aviutl_setting">3 初回設定</a><br>
+        <a href="#aviutl_edit">4 編集</a><br>
+        <a href="#aviutl_uvdown">5-6 エンコード(出力)</a><br>
+    </p>
+    <br>
+    <hr>
+
+    <ol>
+        <li>
+            <strong id="aviutl_install">エンコードソフトのインストール</strong><br>
+            要るもの：<a href="http://spring-fragrance.mints.ne.jp/aviutl/" target="_blank">aviutl、拡張編集Plugin</a>( 直リン:<a href="http://spring-fragrance.mints.ne.jp/aviutl/aviutl100.zip">aviutl100.zip</a>、<a href="http://spring-fragrance.mints.ne.jp/aviutl/exedit92.zip">exedit92.zip</a> )<br>
+            <a href="https://pop.4-bit.jp/?page_id=7929" target="_blank">L-SMASH Works</a>、<a href="https://rigaya34589.blog.fc2.com/blog-category-5.html">x264 guiEx</a> の4つ<br>
+            <br>
+            aviutl100.zip をCドライブの適当な所にフォルダを作って解凍したら、<br>
+            exedit92.zipの<strong>中身</strong> もそのフォルダに解凍する<br>
+            <br>
+            L-SMASH_Works_r9xx-x_plugins.zip の中の <strong>auf aui auc 全4ファイル</strong>を上記のフォルダに解凍する<br>
+            x264guiEx_2.xx.zip の中の <strong>auo_setup.exe</strong> を実行して上記のフォルダを指定する<br>
+            <img src="./img/aviutl_101.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+        </li>
+
+        <li>
+            <strong>プラグインエフェクトのインストール</strong><br>
+            要るもの：<a href="http://auf.jpn.xxxxxxxx.jp/" target="_blank">ガウスぼかし、UVダウンサンプリング、色褪せ軽減β</a><br>
+            ( 直リン:<a href="http://auf.jpn.xxxxxxxx.jp/gblur_0.3.1.zip">gblur_0.3.1.zip</a>、<a href="http://auf.jpn.xxxxxxxx.jp/uvpack_1.0.0.zip">uvpack_1.0.0.zip</a>、<a href="http://auf.jpn.xxxxxxxx.jp/uvfat_0.0.1.zip">uvfat_0.0.1.zip</a> ) の3つ<br>
+            それぞれのzipファイルの<strong>中身</strong>の <strong>aufファイル</strong> を上記のフォルダに解凍する<br>
+            <img src="./img/aviutl_102.png" style="max-width:720px;width:100%;height:auto;"><br>
+            <br>
+        </li>
+
+        <li>
+            <strong id="aviutl_setting">aviutlの設定</strong><br>
+            初回設定時のみ aviutlを<strong>右クリックして管理者権限で実行</strong>する<br><br>
+            メインウィンドウの <strong>ファイル→環境設定→システムの設定</strong>で<br>
+            最大画像サイズをとりあえず4Kくらいにしとく＆最大フレームも大きな数字にする<br>
+            (何でそうしたかは忘れたけど 最大フレーム数に 8388607 が入ってた)<br>
+            <strong>LargeAddressAware のチェック</strong>を入れたらおｋ<br>
+
+            <img src="./img/aviutl_104.png" style="max-width:454px;width:100%;height:auto;"><br>
+            <br>
+            次に <strong>設定→フィルタ順序の設定→ビデオフィルタ順序の設定</strong> で<br>
+            拡張編集を一番上に、一番下にUVダウンサンプリング、その上に色褪せ軽減βをもってくる<br>
+            設定がオワたら一度aviutlを閉じて再起動<br>
+            <img src="./img/aviutl_107.png" style="max-width:226px;width:100%;height:auto;"><br>
+            <br>
+        </li>
+
+        <li>
+            <strong id="aviutl_edit">編集</strong><br>
+            切り抜きや縮小、カットや動画時間を編集する<br>
+            エンコード(変換)するだけならメインウィンドウで動画を読み込んで<br>
+            右下の |← と →| で始点と終点を決めて動画時間を2分以内にしたら <a href="#aviutl_uvdown">5.減色にジャンプ</a><br>
+            <br>
+            <strong>設定→拡張編集の設定</strong> を開きレイヤーウィンドウ（？）を表示させ、<br>
+            レイヤーの何もない所を<strong>右クリック</strong>して<strong>新規プロジェクトの作成</strong>を選ぶ<br>
+            <img src="./img/aviutl_108.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            画像サイズ：適当に(800x600、1024x600 辺りが使いやすい)<br>
+            フレームレート：<strong>60</strong>　音声レート：<strong>48000</strong><br>
+            <img src="./img/aviutl_109.png" style="max-width:720px;width:100%;height:auto;"><br>
+            <br>
+            Layer 1 の何もない所を右クリックして<strong>メディアオブジェクトの追加→動画ファイル</strong><br>
+            <img src="./img/aviutl_201.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            動画ウィンドウが開いたら <strong>参照ファイル</strong> をクリックして録画したファイルを選択する<br>
+            オブジェクトはドラッグすれば動かせるので、動画を00:00:00に持って行って置く<br>
+            下の画像は 1152x864 で撮影した動画を開いたところ<br>
+            <img src="./img/aviutl_202.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            同様に Layer 2 の何も無い所を右クリックして<strong>メディアオブジェクト→音声ファイル</strong>を追加する<br>
+            <strong>参照ファイル</strong> をクリックして上の動画のファイルを選択すればその動画の音声が開かれる<br>
+            <img src="./img/aviutl_203.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            動画のオブジェクト(青い方)をクリックし、動画ファイル欄を出したら(出なかったらダブルクリック)<br>
+            1152x864の場合、左側の数値をクリックし Xに -160 Yに 80 を入力すると大体良い感じになる<br>
+            装備やステを表示する場合は、一番上の状態アイコンの左側位に来るように置くと丁度よい位置になる<br>
+            <br>
+            スライダを動かしても良いが、小数点以下の数字が変動するとボヤけるので<br>
+            大体の位置を合わせたらキーボードで入力すると良い<br>
+            <img src="./img/aviutl_204.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <details>
+                <summary>ROのウィンドウサイズ 1024x768 を録画した場合(クリックで展開)</summary>
+                <p style="padding-left:1em;">
+                    HUDのレイアウトにもよるが、-110,80 辺りが無難<br>
+                    下の例だとチャット欄のUIが写り込んでしまっている<br>
+                    <img src="./img/aviutl_205.png" style="max-width:768px;width:100%;height:auto;"><br>
+                </p>
+           </details>
+           <br>
+           メインウィンドウの下側にあるスライダを動かして、動画の先頭部分を決めたら<br>
+           右下にある |← をクリックしてそこを先頭にする　微調整はその左の &lt;| か |&gt; で1コマづつ動く<br>
+           <img src="./img/aviutl_206.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           別のシーンへ行くために、カットやシーンチェンジをしたい場合は拡張編集ウィンドウの<br>
+           シークバーが有る所に合わせてオブジェクトを右クリックして分割する<br>
+           <br>
+           マウスカーソルの左の垂直線とシークバーをきっちり重ねると上手く行く<br>
+           やり辛いならROOTの下の水色と青いバーをクリックすると時間軸の倍率が変えられる<br>
+           (右に行くほど拡大表示)<br>
+           <img src="./img/aviutl_207.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           音声オブジェクトも同様に分割する<br>
+           別にシークバーに合わせずとも右クリックすれば分割できるが<br>
+           動画と音声の分割後の始点がズレると編集しにくくなるので、できれば合わせる<br>
+           <img src="./img/aviutl_208.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           メインウィンドウのスライダで、次のシーンの始点まで飛ばしたら(&lt;| |&gt; で微調整)<br>
+           拡張編集ウィンドウの動画と音声オブジェクトをシークバーの所で分割する<br>
+           <img src="./img/aviutl_209.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           分割した図<br>
+           <img src="./img/aviutl_210.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           カットする部分を右クリックして削除する(クリックしてDELキーでも可)<br>
+           <img src="./img/aviutl_211.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           カットした図<br>
+           <img src="./img/aviutl_212.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           動画オブジェクトと音声オブジェクトをシーンチェンジ前の所までドラッグしてもってく<br>
+           あんまりはしっこ持つと、長さの変更をしてしまうのでファイル名の後ろ辺りを持つとおｋ<br>
+           <img src="./img/aviutl_213.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           シーンチェンジしたい始点の所に移動し<br>
+           拡張編集の Layer 3 のシークバーの所を右クリックし<strong>フィルタオブジェクト→シーンチェンジ</strong><br>
+           <img src="./img/aviutl_214.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           シーンチェンジの終点をドラッグして次シーンの冒頭に少しかけたらおｋ<br>
+           メディアオブジェクトを追加 で別の動画を読み込んでシーンチェンジもできる<br>
+           このときBGMが付いてるとクッソ面倒臭い<br>
+           <img src="./img/aviutl_215.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           動画の終点を決めたらメインウィンドウ右下の →| をクリックして終わり<br>
+           Twitterの場合、動画は2分以内でないと投稿できないので注意<br>
+           <img src="./img/aviutl_216.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           名前隠しとか映り込んだ他PCにモザイクをかけたいときは Layer 4 を右クリックして<br>
+           <strong>ガウスぼかし</strong> を入れたい開始位置に置いたら、<strong>範囲を確認</strong>のチェックを入れる<br>
+           <img src="./img/aviutl_217.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           X と Y をスライダで動かしながら <strong>範囲の左上</strong> をモザイクをかけたい対象の所に合わせる(微調整は &lt; &gt; で)<br>
+           <img src="./img/aviutl_218.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           モザイクをかける範囲に幅と高さを合わせる 名前なら 幅50～100、高さ16～20位<br>
+           <img src="./img/aviutl_219.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           水平範囲を垂直範囲でモザイクの強度を指定する 名前なら 10～20位<br>
+           最後に <strong>範囲を確認</strong> の <strong>チェックを外す</strong><br>
+           <img src="./img/aviutl_220.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+           ガウスぼかしの終点をドラッグしてモザイクをかける時間を決める<br>
+           この動画の場合はずっと名前が出てるので、動画の終点まで伸ばす<br>
+           ドラッグする時にROOTの下の水色と青のバーを左側にもってくと楽(縮小表示)<br>
+           録画がガバッてると隠さなきゃならない項目が増えるので注意<br>
+           <img src="./img/aviutl_221.png" style="max-width:768px;width:100%;height:auto;"><br>
+           <br>
+        </li>
+
+        <li id="aviutl_uvdown">
+            減色<br>
+            RGBのゲーム画面をそのまま動画にすると、色が潰れるのでメインウィンドウの<br>
+            <strong>フィルタ→ 色褪せ軽減β</strong> と <strong>UVダウンサンプリング</strong> にチェックを入れる<br>
+            <img src="./img/aviutl_222.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            <strong>設定→ 色褪せ軽減β</strong> と <strong>UVダウンサンプリング</strong> でかかり具合を調整する<br>
+            ROなら 色褪せ軽減が 64/128/3840/256　UVダウンサンプルが 6/6/1/2～9/9/1/2 辺りが良いと思う<br>
+            プレビューだけでなく、出力したmp4で確認する事　ちな赤文字は潰れるので読めるレベルならおｋ<br>
+            <img src="./img/aviutl_223.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+        </li>
+
+        <li>
+            出力(エンコード)<br>
+            SNSに投稿できる形式に変換する<br>
+            <br>
+            Twitter の場合、<strong>60fps(秒間60コマ)で投稿するとスーパー劣化する</strong>ので<br>
+            <strong>設定→フレームレートの変更→ 1/2</strong> にする(出てるfpsは目安なので無視)<br>
+            <img src="./img/aviutl_224.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            <strong>ファイル→プラグイン出力</strong> で <strong>拡張x264出力(GUI) Ex</strong> を選択する<br>
+            <img src="./img/aviutl_225.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            適当な名前をいれたら、<strong>初回は</strong>左下の <strong>ビデオ圧縮</strong> をクリックして設定する<br>
+            <img src="./img/aviutl_226.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            左上の シングルパス 品質基準VBR～ を<strong>自動マルチパス</strong>にする<br>
+            <img src="./img/aviutl_227.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            自動マルチパス数 2、目標ビットレート 6000～10000くらい にしておｋ<br>
+            ファイルのダイアログに戻ったら<strong>保存</strong>をクリックすればエンコードが始まる<br>
+            <strong>次からはファイル名を入れたらそのまま保存押せばおｋ</strong><br>
+            <img src="./img/aviutl_228.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            色々表示が出てaviutlウィンドウが点滅するか、総エンコード時間 xx分とか出たら終了<br>
+            出力された mp4ファイルを見てモザイクの隠し忘れや色潰れ具合をちゃんと確認すること<br>
+            <img src="./img/aviutl_229.png" style="max-width:768px;width:100%;height:auto;"><br>
+            <br>
+            オワリ、おつおつ<br>
+        </li>    
+    </ol>
+    <hr>
+    <br>
+    <br>
+</body>
+</html>
