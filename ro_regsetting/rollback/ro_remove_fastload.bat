@@ -55,18 +55,22 @@ $reg_path  = 'HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Gravity Soft\Ragnarok\Skil
 
 if( Test-Path $reg_drive ){
 
-   $reg_perm = "[1 5 10]"
+   $reg_perm = "[1 5 7 17]"
    $acl_file = "$Env:Temp\SkillUseLevelInfo.txt"
 
    #Œ ŒÀ‚ğæ“¾
    "`"$reg_path`" $reg_perm" > $acl_file
    regini "$acl_file"
-   del "$acl_file"
 
    #Äì¬
    write-host "re create SkillUseLevelInfo"
    Reg Delete "$reg_path" /f
    Reg Add "$reg_path"
+
+   #Œ ŒÀ‚ğÄİ’è
+   regini "$acl_file"
+   del "$acl_file"
+
 }
 else{
 #   if( $ui_lang ){

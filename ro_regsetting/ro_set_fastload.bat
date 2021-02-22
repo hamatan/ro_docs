@@ -50,10 +50,11 @@ if( [Environment]::OSVersion.Version -LT (new-object 'Version' 10,0) ){
 
 #### スキル履歴をクリア ###################################################
 
-$reg_path = 'HKLM:\SOFTWARE\WOW6432Node\Gravity Soft\Ragnarok\SkillUseLevelInfo'
-if( Test-Path $reg_path ){
+$reg_drive = 'HKLM:SOFTWARE\WOW6432Node\Gravity Soft\Ragnarok\SkillUseLevelInfo'
+$reg_path = 'HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Gravity Soft\Ragnarok\SkillUseLevelInfo'
+if( Test-Path $reg_drive ){
    try{
-      Get-Item -Path $reg_path -ErrorAction Stop
+      Get-Item -Path $reg_drive -ErrorAction Stop
    }
    catch{
 #      if( $ui_lang ){
@@ -66,16 +67,16 @@ if( Test-Path $reg_path ){
    }
 
    try{
-      Remove-ItemProperty -Path "$reg_path" -Name * -ErrorAction Stop
+      Remove-ItemProperty -Path "$reg_drive" -Name * -ErrorAction Stop
    }
    catch{
 #      if( $ui_lang ){
 #         [System.Windows.Forms.MessageBox]::Show('レジストリキーは既に読取り専用です','エラー')
 #      }
 #      else{
-         [System.Windows.Forms.MessageBox]::Show('already ReadOnly Key','error')
+          [System.Windows.Forms.MessageBox]::Show('already ReadOnly Key','error')
 #      }
-      exit
+       exit
    }
 }
 else{
@@ -90,20 +91,14 @@ else{
 
 #### 書込拒否を設定 #######################################################
 
-if( Test-Path $reg_path ){
-   $acl = Get-Acl "$reg_path" -ErrorAction Stop
-   $acl.Access | foreach{ $acl.SetAccessRuleProtection($true,$true) }
-   $acl | Set-Acl "$reg_path" -ErrorAction Stop
+if( Test-Path $reg_drive ){
+   $reg_perm = "[2]"
+   $acl_file = "$Env:Temp\SkillUseLevelInfo.txt"
 
-   $acl = Get-Acl "$reg_path" -ErrorAction Stop
-   $ErrorActionPreference = "silentlycontinue"
-   $acl.Access | foreach{
-      $IdentityReference = $_ | Select-Object -ExpandProperty IdentityReference
-      $AddACL = New-Object System.Security.AccessControl.RegistryAccessRule("$IdentityReference","WriteKey","ContainerInherit, ObjectInherit", "None","Deny")
-      $acl.SetAccessRule($AddACL) 
-   }
-   $ErrorActionPreference = "Continue"
-   $acl | Set-Acl "$reg_path" -ErrorAction Stop
+   # admin だけにリードオンリー権限を設定
+   "`"$reg_path`" $reg_perm" > $acl_file
+   regini "$acl_file"
+   del "$acl_file"
 }
 else{
 #   if( $ui_lang ){
