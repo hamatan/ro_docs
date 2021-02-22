@@ -13,7 +13,16 @@ exit /b %errorlevel%
 #
 #############################################################
 # csvファイルを開く
-$ro2 = import-csv ./db/01_monster_drop_item.csv -Encoding UTF8 -Header "ID","NAME","drop_item1","drop_per1","drop_item2","drop_per2","drop_item3","drop_per3","drop_item4","drop_per4","drop_item5","drop_per5","drop_item6","drop_per6","drop_item7","drop_per7","drop_item8","drop_per8" | Select-Object -Skip 1
+Add-Type -Assembly System.Windows.Forms
+$csvfile = "./db/01_monster_drop_item.csv"
+
+if( Test-Path $csvfile ) {
+   $ro2 = import-csv $csvfile -Encoding UTF8 -Header "ID","NAME","drop_item1","drop_per1","drop_item2","drop_per2","drop_item3","drop_per3","drop_item4","drop_per4","drop_item5","drop_per5","drop_item6","drop_per6","drop_item7","drop_per7","drop_item8","drop_per8" | Select-Object -Skip 1
+}
+else{
+   [System.Windows.Forms.MessageBox]::Show('cant open csv file','error')
+   exit
+}
 
 #############################################################
 # ドロップ率をアイテム名に含める

@@ -13,7 +13,16 @@ exit /b %errorlevel%
 #
 #############################################################
 # csvファイルを開く
-$ro2 = import-csv ./db/03_monster_map.csv -Encoding UTF8 -Header "モンスタID","モンスタ名","マップID","出現タイプ","出現数","出現時間","ランダム幅","備考","サブマップソートNo","サブマップ名" | Select-Object -Skip 1
+Add-Type -Assembly System.Windows.Forms
+$csvfile = "./db/03_monster_map.csv"
+
+if( Test-Path $csvfile ) {
+   $ro2 = import-csv $csvfile -Encoding UTF8 -Header "モンスタID","モンスタ名","マップID","出現タイプ","出現数","出現時間","ランダム幅","備考","サブマップソートNo","サブマップ名" | Select-Object -Skip 1
+}
+else{
+   [System.Windows.Forms.MessageBox]::Show('cant open csv file','error')
+   exit
+}
 
 #############################################################
 # GUIで表示
