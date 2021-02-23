@@ -2,7 +2,6 @@
 echo off)
 if "%PROCESSOR_ARCHITECTURE%" NEQ "AMD64" (
    echo error:dont support 32bit OS
-   echo error:32bit OSでは動作しません
    pause
    exit
 )
@@ -32,7 +31,7 @@ else{
    $ui_lang = 0
 }
 
-#実行確認
+# 実行確認
 $set_roREG = [System.Windows.Forms.MessageBox]::Show('do u rollback skill cache(SkillUseLevelInfo)?','check','YesNo','Question','Button2')
 If($set_roREG -NE 'Yes'){
    exit
@@ -58,16 +57,16 @@ if( Test-Path $reg_drive ){
    $reg_perm = "[1 5 7 17]"
    $acl_file = "$Env:Temp\SkillUseLevelInfo.txt"
 
-   #権限を取得
+   # 権限を取得
    "`"$reg_path`" $reg_perm" > $acl_file
    regini "$acl_file"
 
-   #再作成
+   # 再作成
    write-host "re create SkillUseLevelInfo"
    Reg Delete "$reg_path" /f
    Reg Add "$reg_path"
 
-   #権限を再設定
+   # 権限を再設定
    regini "$acl_file"
    del "$acl_file"
 

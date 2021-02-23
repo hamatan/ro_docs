@@ -2,7 +2,6 @@
 echo off)
 if "%PROCESSOR_ARCHITECTURE%" NEQ "AMD64" (
    echo error:dont support 32bit OS
-   echo error:32bit OSでは動作しません
    pause
    exit
 )
@@ -32,7 +31,7 @@ else{
    $ui_lang = 0
 }
 
-#実行確認
+# 実行確認
 $set_TAF = [System.Windows.Forms.MessageBox]::Show('do u remove TcpAckFrequency(TAF)?','check','YesNo','Question','Button2')
 If($set_TAF -NE 'Yes'){
    exit
@@ -50,10 +49,10 @@ if( [Environment]::OSVersion.Version -LT (new-object 'Version' 10,0) ){
 
 #### TcpAckFrequency (TAF)を設定 ##########################################
 
-#wifiアダプタが有るかどうか確認する
-#$wifi_adapter = netsh wlan show interface | select-string GUID | %{ ($_ -split ":")[-1].trim() }
+# wifiアダプタが有るかどうか確認する
+# $wifi_adapter = netsh wlan show interface | select-string GUID | %{ ($_ -split ":")[-1].trim() }
 
-#物理ネットワークインターフェースを検索する
+# 物理ネットワークインターフェースを検索する
 Get-WmiObject Win32_NetworkAdapter | foreach{
    if($_.PNPDeviceID -LIKE 'PCI\VEN_*'){
       $NIC_GUID = $_ | Select-Object -ExpandProperty GUID
@@ -65,13 +64,13 @@ Get-WmiObject Win32_NetworkAdapter | foreach{
 
      #if( $set_TAF -EQ 'Yes'){
          if( (Get-ItemProperty $ipv4_reg).PSObject.Properties.Name -contains "TcpAckFrequency" ){
-           #TcpAckFrequency が存在する場合はレジストリエントリを削除する
+           # TcpAckFrequency が存在する場合はレジストリエントリを削除する
             write-host "Remove-Item:$ipv4_reg"
             Remove-ItemProperty -Path "$ipv4_reg" -Name "TcpAckFrequency"
          }
 
          if( (Get-ItemProperty $ipv6_reg).PSObject.Properties.Name -contains "TcpAckFrequency" ){
-           #TcpAckFrequency が存在する場合はレジストリエントリを削除する(ipv6)
+           # TcpAckFrequency が存在する場合はレジストリエントリを削除する(ipv6)
             write-host "Remove-Item:$ipv6_reg"
             Remove-ItemProperty -Path "$ipv6_reg" -Name "TcpAckFrequency"
          }

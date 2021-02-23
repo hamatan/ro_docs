@@ -2,7 +2,6 @@
 echo off)
 if "%PROCESSOR_ARCHITECTURE%" NEQ "AMD64" (
    echo error:dont support 32bit OS
-   echo error:32bit OSでは動作しません
    pause
    exit
 )
@@ -32,7 +31,7 @@ else{
    $ui_lang = 0
 }
 
-#実行確認
+# 実行確認
 $set_TAF = [System.Windows.Forms.MessageBox]::Show('do u Set TcpAckFrequency(TAF)?','check','YesNo','Question','Button2')
 If($set_TAF -NE 'Yes'){
    exit
@@ -50,10 +49,10 @@ if( [Environment]::OSVersion.Version -LT (new-object 'Version' 10,0) ){
 
 #### TcpAckFrequency (TAF)を設定 ##########################################
 
-#wifiアダプタが有るかどうか確認する
+# wifiアダプタが有るかどうか確認する
 $wifi_adapter = netsh wlan show interface | select-string GUID | %{ ($_ -split ":")[-1].trim() }
 
-#物理ネットワークインターフェースを検索する
+# 物理ネットワークインターフェースを検索する
 Get-WmiObject Win32_NetworkAdapter | foreach{
    if($_.PNPDeviceID -LIKE 'PCI\VEN_*'){
       $NIC_GUID = $_ | Select-Object -ExpandProperty GUID
@@ -66,23 +65,23 @@ Get-WmiObject Win32_NetworkAdapter | foreach{
 
          if( $set_TAF -EQ 'Yes'){
             if( (Get-ItemProperty $ipv4_reg).PSObject.Properties.Name -contains "TcpAckFrequency" ){
-              #TcpAckFrequency が存在する場合はレジストリエントリを再設定する
+              # TcpAckFrequency が存在する場合はレジストリエントリを再設定する
                write-host "Set-Item:$ipv4_reg"
                Set-ItemProperty -Path "$ipv4_reg" -Name "TcpAckFrequency" -Value 1
             }
             else{
-              #TcpAckFrequency が存在しない場合はレジストリエントリを作成する
+              # TcpAckFrequency が存在しない場合はレジストリエントリを作成する
                write-host "New-Item:$ipv4_reg"
                New-ItemProperty -Path "$ipv4_reg" -Name "TcpAckFrequency" -PropertyType DWORD -Value 1
             }
 
             if( (Get-ItemProperty $ipv6_reg).PSObject.Properties.Name -contains "TcpAckFrequency" ){
-              #TcpAckFrequency が存在する場合はレジストリエントリを再設定する(ipv6)
+              # TcpAckFrequency が存在する場合はレジストリエントリを再設定する(ipv6)
                write-host "Set-Item:$ipv6_reg"
                Set-ItemProperty -Path "$ipv6_reg" -Name "TcpAckFrequency" -Value 1
             }
             else{
-              #TcpAckFrequency が存在しない場合はレジストリエントリを作成する(ipv6)
+              # TcpAckFrequency が存在しない場合はレジストリエントリを作成する(ipv6)
                write-host "New-Item:$ipv6_reg"
                New-ItemProperty -Path "$ipv6_reg" -Name "TcpAckFrequency" -PropertyType DWORD -Value 1
             }
@@ -93,23 +92,23 @@ Get-WmiObject Win32_NetworkAdapter | foreach{
 
         #if( $set_TAF -EQ 'Yes'){
             if( (Get-ItemProperty $ipv4_reg).PSObject.Properties.Name -contains "TcpAckFrequency" ){
-              #TcpAckFrequency が存在する場合はレジストリエントリを再設定する
+              # TcpAckFrequency が存在する場合はレジストリエントリを再設定する
                write-host "Set-Item:$ipv4_reg"
                Set-ItemProperty -Path "$ipv4_reg" -Name "TcpAckFrequency" -Value 1
             }
             else{
-              #TcpAckFrequency が存在しない場合はレジストリエントリを作成する
+              # TcpAckFrequency が存在しない場合はレジストリエントリを作成する
                write-host "New-Item:$ipv4_reg"
                New-ItemProperty -Path "$ipv4_reg" -Name "TcpAckFrequency" -PropertyType DWORD -Value 1
             }
 
             if( (Get-ItemProperty $ipv6_reg).PSObject.Properties.Name -contains "TcpAckFrequency" ){
-              #TcpAckFrequency が存在する場合はレジストリエントリを再設定する(ipv6)
+              # TcpAckFrequency が存在する場合はレジストリエントリを再設定する(ipv6)
                write-host "Set-Item:$ipv6_reg"
                Set-ItemProperty -Path "$ipv6_reg" -Name "TcpAckFrequency" -Value 1
             }
             else{
-              #TcpAckFrequency が存在しない場合はレジストリエントリを作成する(ipv6)
+              # TcpAckFrequency が存在しない場合はレジストリエントリを作成する(ipv6)
                write-host "New-Item:$ipv6_reg"
                New-ItemProperty -Path "$ipv6_reg" -Name "TcpAckFrequency" -PropertyType DWORD -Value 1
             }

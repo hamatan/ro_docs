@@ -2,7 +2,6 @@
 echo off)
 if "%PROCESSOR_ARCHITECTURE%" NEQ "AMD64" (
    echo error:dont support 32bit OS
-   echo error:32bit OSでは動作しません
    pause
    exit
 )
@@ -32,7 +31,7 @@ else{
    $ui_lang = 0
 }
 
-#実行確認
+# 実行確認
 $set_roREG = [System.Windows.Forms.MessageBox]::Show('do u clear skill cache(SkillUseLevelInfo)?','check','YesNo','Question','Button2')
 If($set_roREG -NE 'Yes'){
    exit
