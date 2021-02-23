@@ -5,19 +5,19 @@ set "THIS_PATH=%~f0"
 set "PARAM_1=%~1"
 PowerShell.exe -windowstyle hidden -Command "iex -Command ((gc \"%THIS_PATH:`=``%\") -join \"`n\")"
 exit /b %errorlevel%
--- ‚±‚Ì1‚Âã‚Ìs‚Ü‚Åƒoƒbƒ`ƒtƒ@ƒCƒ‹
+-- ã“ã®1ã¤ä¸Šã®è¡Œã¾ã§ãƒãƒƒãƒãƒ•ã‚¡ã‚¤ãƒ«
 ') | sv -Name TempVar
-# Ql
+# å‚è€ƒ
 # https://www.pg-fl.jp/program/tips/ps1bat.htm
-# ‚±‚±‚©‚çPowerShellƒXƒNƒŠƒvƒg
+# ã“ã“ã‹ã‚‰PowerShellã‚¹ã‚¯ãƒªãƒ—ãƒˆ
 #
 #############################################################
-# csvƒtƒ@ƒCƒ‹‚ğŠJ‚­
+# csvãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
 Add-Type -Assembly System.Windows.Forms
 $csvfile = "./db/03_monster_map.csv"
 
 if( Test-Path $csvfile ) {
-   $ro2 = import-csv $csvfile -Encoding UTF8 -Header "ƒ‚ƒ“ƒXƒ^ID","ƒ‚ƒ“ƒXƒ^–¼","ƒ}ƒbƒvID","oŒ»ƒ^ƒCƒv","oŒ»”","oŒ»ŠÔ","ƒ‰ƒ“ƒ_ƒ€•","”õl","ƒTƒuƒ}ƒbƒvƒ\[ƒgNo","ƒTƒuƒ}ƒbƒv–¼" | Select-Object -Skip 1
+   $ro2 = import-csv $csvfile -Encoding UTF8 -Header "ãƒ¢ãƒ³ã‚¹ã‚¿ID","ãƒ¢ãƒ³ã‚¹ã‚¿å","ãƒãƒƒãƒ—ID","å‡ºç¾ã‚¿ã‚¤ãƒ—","å‡ºç¾æ•°","å‡ºç¾æ™‚é–“","ãƒ©ãƒ³ãƒ€ãƒ å¹…","å‚™è€ƒ","ã‚µãƒ–ãƒãƒƒãƒ—ã‚½ãƒ¼ãƒˆNo","ã‚µãƒ–ãƒãƒƒãƒ—å" | Select-Object -Skip 1
 }
 else{
    [System.Windows.Forms.MessageBox]::Show('cant open csv file','error')
@@ -25,5 +25,5 @@ else{
 }
 
 #############################################################
-# GUI‚Å•\¦
-$ro2 | select-object "ƒ‚ƒ“ƒXƒ^–¼","oŒ»”","oŒ»ŠÔ","ƒ‰ƒ“ƒ_ƒ€•","ƒ}ƒbƒvID","ƒTƒuƒ}ƒbƒv–¼" | Out-GridView -wait
+# GUIã§è¡¨ç¤º
+$ro2 | select-object "ãƒ¢ãƒ³ã‚¹ã‚¿å","å‡ºç¾æ•°","å‡ºç¾æ™‚é–“","ãƒ©ãƒ³ãƒ€ãƒ å¹…","ãƒãƒƒãƒ—ID","ã‚µãƒ–ãƒãƒƒãƒ—å" | Out-GridView -wait

@@ -2,7 +2,7 @@
 echo off)
 if "%PROCESSOR_ARCHITECTURE%" NEQ "AMD64" (
    echo error:dont support 32bit OS
-   echo error:32bit OS‚Å‚Í“®ì‚µ‚Ü‚¹‚ñ
+   echo error:32bit OSã§ã¯å‹•ä½œã—ã¾ã›ã‚“
    pause
    exit
 )
@@ -18,11 +18,11 @@ exit /b %errorlevel%
 powershell -NoProfile -ExecutionPolicy unrestricted -Command "Start-Process %~f0 -Verb runas"
 exit
 ') | sv -Name TempVar
-# Ql
+# å‚è€ƒ
 # https://vogel.at.webry.info/201707/article_9.html
-# ‚±‚±‚©‚çæ‚É PowerShellƒXƒNƒŠƒvƒg‚ğ‹Lq‚·‚é
+# ã“ã“ã‹ã‚‰å…ˆã« PowerShellã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’è¨˜è¿°ã™ã‚‹
 #
-#### ŠÂ‹«ƒ`ƒFƒbƒN #########################################################
+#### ç’°å¢ƒãƒã‚§ãƒƒã‚¯ #########################################################
 Add-Type -Assembly System.Windows.Forms
 
 if( (Get-Culture | Select-Object -ExpandProperty Name) -match 'ja-JP' ){
@@ -32,7 +32,7 @@ else{
    $ui_lang = 0
 }
 
-#ÀsŠm”F
+#å®Ÿè¡Œç¢ºèª
 $set_TAF = [System.Windows.Forms.MessageBox]::Show('do u remove TcpAckFrequency(TAF)?','check','YesNo','Question','Button2')
 If($set_TAF -NE 'Yes'){
    exit
@@ -40,7 +40,7 @@ If($set_TAF -NE 'Yes'){
 
 if( [Environment]::OSVersion.Version -LT (new-object 'Version' 10,0) ){
 #   if( $ui_lang ){
-#      [System.Windows.Forms.MessageBox]::Show('Windows 7/8/XP/Vista ‚Å‚Í“®ì‚µ‚Ü‚¹‚ñ','ƒGƒ‰[')
+#      [System.Windows.Forms.MessageBox]::Show('Windows 7/8/XP/Vista ã§ã¯å‹•ä½œã—ã¾ã›ã‚“','ã‚¨ãƒ©ãƒ¼')
 #   }
 #   else{
       [System.Windows.Forms.MessageBox]::Show('dont support Win7/8/XP/Vista','error')
@@ -48,12 +48,12 @@ if( [Environment]::OSVersion.Version -LT (new-object 'Version' 10,0) ){
    exit
 }
 
-#### TcpAckFrequency (TAF)‚ğİ’è ##########################################
+#### TcpAckFrequency (TAF)ã‚’è¨­å®š ##########################################
 
-#wifiƒAƒ_ƒvƒ^‚ª—L‚é‚©‚Ç‚¤‚©Šm”F‚·‚é
+#wifiã‚¢ãƒ€ãƒ—ã‚¿ãŒæœ‰ã‚‹ã‹ã©ã†ã‹ç¢ºèªã™ã‚‹
 #$wifi_adapter = netsh wlan show interface | select-string GUID | %{ ($_ -split ":")[-1].trim() }
 
-#•¨—ƒlƒbƒgƒ[ƒNƒCƒ“ƒ^[ƒtƒF[ƒX‚ğŒŸõ‚·‚é
+#ç‰©ç†ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’æ¤œç´¢ã™ã‚‹
 Get-WmiObject Win32_NetworkAdapter | foreach{
    if($_.PNPDeviceID -LIKE 'PCI\VEN_*'){
       $NIC_GUID = $_ | Select-Object -ExpandProperty GUID
@@ -65,13 +65,13 @@ Get-WmiObject Win32_NetworkAdapter | foreach{
 
      #if( $set_TAF -EQ 'Yes'){
          if( (Get-ItemProperty $ipv4_reg).PSObject.Properties.Name -contains "TcpAckFrequency" ){
-           #TcpAckFrequency ‚ª‘¶İ‚·‚éê‡‚ÍƒŒƒWƒXƒgƒŠƒGƒ“ƒgƒŠ‚ğíœ‚·‚é
+           #TcpAckFrequency ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‚¨ãƒ³ãƒˆãƒªã‚’å‰Šé™¤ã™ã‚‹
             write-host "Remove-Item:$ipv4_reg"
             Remove-ItemProperty -Path "$ipv4_reg" -Name "TcpAckFrequency"
          }
 
          if( (Get-ItemProperty $ipv6_reg).PSObject.Properties.Name -contains "TcpAckFrequency" ){
-           #TcpAckFrequency ‚ª‘¶İ‚·‚éê‡‚ÍƒŒƒWƒXƒgƒŠƒGƒ“ƒgƒŠ‚ğíœ‚·‚é(ipv6)
+           #TcpAckFrequency ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‚¨ãƒ³ãƒˆãƒªã‚’å‰Šé™¤ã™ã‚‹(ipv6)
             write-host "Remove-Item:$ipv6_reg"
             Remove-ItemProperty -Path "$ipv6_reg" -Name "TcpAckFrequency"
          }
@@ -79,10 +79,10 @@ Get-WmiObject Win32_NetworkAdapter | foreach{
    }
 }
 
-#### I—¹ #################################################################
+#### çµ‚äº† #################################################################
 
 #if( $ui_lang ){
-#   [System.Windows.Forms.MessageBox]::Show('Windows‚ğÄ‹N“®‚µ‚Ä‚­‚¾‚³‚¢','¬Œ÷')
+#   [System.Windows.Forms.MessageBox]::Show('Windowsã‚’å†èµ·å‹•ã—ã¦ãã ã•ã„','æˆåŠŸ')
 #}
 #else{
    [System.Windows.Forms.MessageBox]::Show('plz reboot ur windows','ok')

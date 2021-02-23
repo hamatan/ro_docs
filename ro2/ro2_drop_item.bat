@@ -5,14 +5,14 @@ set "THIS_PATH=%~f0"
 set "PARAM_1=%~1"
 PowerShell.exe -windowstyle hidden -Command "iex -Command ((gc \"%THIS_PATH:`=``%\") -join \"`n\")"
 exit /b %errorlevel%
--- ‚±‚Ì1‚Âã‚Ìs‚Ü‚Åƒoƒbƒ`ƒtƒ@ƒCƒ‹
+-- ã“ã®1ã¤ä¸Šã®è¡Œã¾ã§ãƒãƒƒãƒãƒ•ã‚¡ã‚¤ãƒ«
 ') | sv -Name TempVar
-# Ql
+# å‚è€ƒ
 # https://www.pg-fl.jp/program/tips/ps1bat.htm
-# ‚±‚±‚©‚çPowerShellƒXƒNƒŠƒvƒg
+# ã“ã“ã‹ã‚‰PowerShellã‚¹ã‚¯ãƒªãƒ—ãƒˆ
 #
 #############################################################
-# csvƒtƒ@ƒCƒ‹‚ğŠJ‚­
+# csvãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
 Add-Type -Assembly System.Windows.Forms
 $csvfile = "./db/01_monster_drop_item.csv"
 
@@ -25,9 +25,9 @@ else{
 }
 
 #############################################################
-# ƒhƒƒbƒv—¦‚ğƒAƒCƒeƒ€–¼‚ÉŠÜ‚ß‚é
+# ãƒ‰ãƒ­ãƒƒãƒ—ç‡ã‚’ã‚¢ã‚¤ãƒ†ãƒ åã«å«ã‚ã‚‹
 #
-# ‚È‚ñ‚©’x‚¢
+# ãªã‚“ã‹é…ã„
 # foreach($work in $ro2){ `
 #	for( $i=2; $i -lt 17; $i= $i+2 ){ `
 #		if( @($work.PSObject.Properties)[$i+1].Value -ne 0){ `
@@ -47,5 +47,5 @@ foreach($work in $ro2){ `
 }
 
 #############################################################
-# GUI‚Å•\¦
+# GUIã§è¡¨ç¤º
 $ro2 | select-object name,drop_item1,drop_item2,drop_item3,drop_item4,drop_item5,drop_item6,drop_item7,drop_item8 | Out-GridView -wait

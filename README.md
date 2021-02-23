@@ -2,7 +2,7 @@
 RagnarokOnline Document
 
 ./ro_regsetting
-ROに関する設定変更スクリプト
+RO縺ｫ髢｢縺吶ｋ險ｭ螳壼､画峩繧ｹ繧ｯ繝ｪ繝励ヨ
 
 ./ro2
-RO2のcsvファイルをローカルで参照するスクリプト
+RO2縺ｮcsv繝輔ぃ繧､繝ｫ繧偵Ο繝ｼ繧ｫ繝ｫ縺ｧ蜿ら�ｧ縺吶ｋ繧ｹ繧ｯ繝ｪ繝励ヨ

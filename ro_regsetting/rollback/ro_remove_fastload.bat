@@ -2,7 +2,7 @@
 echo off)
 if "%PROCESSOR_ARCHITECTURE%" NEQ "AMD64" (
    echo error:dont support 32bit OS
-   echo error:32bit OS‚Å‚Í“®ì‚µ‚Ü‚¹‚ñ
+   echo error:32bit OSã§ã¯å‹•ä½œã—ã¾ã›ã‚“
    pause
    exit
 )
@@ -18,11 +18,11 @@ exit /b %errorlevel%
 powershell -NoProfile -ExecutionPolicy unrestricted -Command "Start-Process %~f0 -Verb runas"
 exit
 ') | sv -Name TempVar
-# Ql
+# å‚è€ƒ
 # https://vogel.at.webry.info/201707/article_9.html
-# ‚±‚±‚©‚çæ‚É PowerShellƒXƒNƒŠƒvƒg‚ğ‹Lq‚·‚é
+# ã“ã“ã‹ã‚‰å…ˆã« PowerShellã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’è¨˜è¿°ã™ã‚‹
 #
-#### ŠÂ‹«ƒ`ƒFƒbƒN #########################################################
+#### ç’°å¢ƒãƒã‚§ãƒƒã‚¯ #########################################################
 Add-Type -Assembly System.Windows.Forms
 
 if( (Get-Culture | Select-Object -ExpandProperty Name) -match 'ja-JP' ){
@@ -32,7 +32,7 @@ else{
    $ui_lang = 0
 }
 
-#ÀsŠm”F
+#å®Ÿè¡Œç¢ºèª
 $set_roREG = [System.Windows.Forms.MessageBox]::Show('do u rollback skill cache(SkillUseLevelInfo)?','check','YesNo','Question','Button2')
 If($set_roREG -NE 'Yes'){
    exit
@@ -40,7 +40,7 @@ If($set_roREG -NE 'Yes'){
 
 if( [Environment]::OSVersion.Version -LT (new-object 'Version' 10,0) ){
 #   if( $ui_lang ){
-#      [System.Windows.Forms.MessageBox]::Show('Windows 7/8/XP/Vista ‚Å‚Í“®ì‚µ‚Ü‚¹‚ñ','ƒGƒ‰[')
+#      [System.Windows.Forms.MessageBox]::Show('Windows 7/8/XP/Vista ã§ã¯å‹•ä½œã—ã¾ã›ã‚“','ã‚¨ãƒ©ãƒ¼')
 #   }
 #   else{
       [System.Windows.Forms.MessageBox]::Show('dont support Win7/8/XP/Vista','error')
@@ -48,7 +48,7 @@ if( [Environment]::OSVersion.Version -LT (new-object 'Version' 10,0) ){
    exit
 }
 
-#### ƒŒƒWƒXƒgƒŠ‚ğÄì¬ #############################################
+#### ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‚’å†ä½œæˆ #############################################
 
 $reg_drive = 'HKLM:SOFTWARE\WOW6432Node\Gravity Soft\Ragnarok\SkillUseLevelInfo'
 $reg_path  = 'HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Gravity Soft\Ragnarok\SkillUseLevelInfo'
@@ -58,23 +58,23 @@ if( Test-Path $reg_drive ){
    $reg_perm = "[1 5 7 17]"
    $acl_file = "$Env:Temp\SkillUseLevelInfo.txt"
 
-   #Œ ŒÀ‚ğæ“¾
+   #æ¨©é™ã‚’å–å¾—
    "`"$reg_path`" $reg_perm" > $acl_file
    regini "$acl_file"
 
-   #Äì¬
+   #å†ä½œæˆ
    write-host "re create SkillUseLevelInfo"
    Reg Delete "$reg_path" /f
    Reg Add "$reg_path"
 
-   #Œ ŒÀ‚ğÄİ’è
+   #æ¨©é™ã‚’å†è¨­å®š
    regini "$acl_file"
    del "$acl_file"
 
 }
 else{
 #   if( $ui_lang ){
-#      [System.Windows.Forms.MessageBox]::Show('RagnarokOnline‚ÌƒŒƒWƒXƒgƒŠ‚ª‘¶İ‚µ‚Ü‚¹‚ñ','ƒGƒ‰[')
+#      [System.Windows.Forms.MessageBox]::Show('RagnarokOnlineã®ãƒ¬ã‚¸ã‚¹ãƒˆãƒªãŒå­˜åœ¨ã—ã¾ã›ã‚“','ã‚¨ãƒ©ãƒ¼')
 #   }
 #   else{
       [System.Windows.Forms.MessageBox]::Show('RO key not found','error')
@@ -82,10 +82,10 @@ else{
    exit
 }
 
-#### I—¹ #################################################################
+#### çµ‚äº† #################################################################
 
 #if( $ui_lang ){
-#   [System.Windows.Forms.MessageBox]::Show('Windows‚ğÄ‹N“®‚µ‚Ä‚­‚¾‚³‚¢','¬Œ÷')
+#   [System.Windows.Forms.MessageBox]::Show('Windowsã‚’å†èµ·å‹•ã—ã¦ãã ã•ã„','æˆåŠŸ')
 #}
 #else{
    [System.Windows.Forms.MessageBox]::Show('plz reboot ur windows','ok')
