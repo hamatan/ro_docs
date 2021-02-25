@@ -3,7 +3,7 @@ echo off)
 setlocal enableextensions
 set "THIS_PATH=%~f0"
 set "PARAM_1=%~1"
-PowerShell.exe -Command "iex -Command ((gc \"%THIS_PATH:`=``%\") -join \"`n\")"
+PowerShell.exe -windowstyle hidden -Command "iex -Command ((gc \"%THIS_PATH:`=``%\") -join \"`n\")"
 exit /b %errorlevel%
 -- この1つ上の行までバッチファイル
 ') | sv -Name TempVar
