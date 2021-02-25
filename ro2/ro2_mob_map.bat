@@ -46,7 +46,7 @@ else{
 #
 #############################################################
 # ↑の高速化
-Measure-Command{ `
+#Measure-Command{ `
 
 #$maplist = @();
 $map_id  = New-Object 'System.Collections.Generic.List[System.String]';
@@ -60,24 +60,14 @@ foreach( $temp in $map ){ `
    $map_id.Add($temp.ID);
    $map_name.Add($temp.MAP_NAME);
 }
-## 地獄のようなifブロック生成1 (文字列にしたらutf-8で文字化けした、ANSIなら最速 0.8sec)
-##foreach( $temp in $maplist ){ `
-##   "   elseif( `$work.MAP -eq `"{0}`" ) {{ `$work.MAP = `"{1}`" }}" -f $temp.ID,$temp.NAME >> cachemap.txt; `
-##}
-#
-# 地獄のようなifブロック生成2 (1.8sec)
-#$i=0;
-#foreach( $temp in $maplist ){ `
-#   "   elseif( `$work.MAP -eq `$maplist[{0}].ID ) {{ `$work.MAP = `$maplist[{0}].NAME }}" -f $i >> cachemap.txt; `
-#   $i++;  `
-#}
-#
-# 地獄のようなifブロック
+
 foreach( $work in $ro2 ){  `
    $i = [array]::IndexOf($map_id, $work.MAP); `
-   $work.MAP = $map_name[$i]; `
+   if( $i -ne -1){
+      $work.MAP = $map_name[$i]; `
+   }
 }
-}
+#}
 #############################################################
 # GUIで表示
 $ro2 | select-object "NAME","count","time","random","MAP","subMAP" | Out-GridView -wait
