@@ -39,7 +39,8 @@ else{
 #foreach($work in $ro2){ `
 #   foreach($work2 in $map){ `
 #      if( $work.MAP -match $work2.ID ){ `
-#          $work.MAP = $work2.MAP_NAME `
+#          $work.MAP = $work2.MAP_NAME; `
+#          break;
 #      } `
 #   } `
 #} `
