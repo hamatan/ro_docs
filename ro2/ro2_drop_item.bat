@@ -19,7 +19,7 @@ $csvfile2 = "./db/03_monster_map.csv"
 $csvfile3 = "./db/06_map_portal.csv"
 
 if( Test-Path $csvfile1 ) {
-   $ro2 = import-csv $csvfile1 -Encoding UTF8 -Header "ID","NAME","drop_item1","drop_per1","drop_item2","drop_per2","drop_item3","drop_per3","drop_item4","drop_per4","drop_item5","drop_per5","drop_item6","drop_per6","drop_item7","drop_per7","drop_item8","drop_per8" | Select-Object -Skip 1
+   $ro2 = import-csv $csvfile1 -Encoding UTF8 -Header "ID","NAME","item1","drop1","item2","drop2","item3","drop3","item4","drop4","item5","drop5","item6","drop6","item7","drop7","item8","drop8" | Select-Object -Skip 1
 }
 else{
    [System.Windows.Forms.MessageBox]::Show('cant open csv file','error')
@@ -35,7 +35,7 @@ else{
 }
 
 if( Test-Path $csvfile3 ) {
-   $map = import-csv $csvfile3 -Encoding UTF8 -Header "ID","MAP_NAME","KANA","city","portal","map_in","dun_in","Fld_Dun_MD","delete","BGM","BGM_title","country","area","pass","quest","party","zeny","time_limit","CT","re_Try","notes","short_NAME","sNAME_KANA" | Select-Object -Skip 1
+   $map = import-csv $csvfile3 -Encoding UTF8 -Header "MAP","MAP_NAME","KANA","city","portal","map_in","dun_in","Fld_Dun_MD","delete","BGM","BGM_title","country","area","pass","quest","party","zeny","time_limit","CT","re_Try","notes","short_NAME","sNAME_KANA" | Select-Object -Skip 1
 }
 else{
    [System.Windows.Forms.MessageBox]::Show('cant open csv file','error')
@@ -44,56 +44,49 @@ else{
 
 #############################################################
 # マップ名を抽出
-$map_id  = New-Object 'System.Collections.Generic.List[System.String]';
-$map_name= New-Object 'System.Collections.Generic.List[System.String]';
-$mob_cnt = New-Object 'System.Collections.Generic.List[System.String]';
-
-foreach( $work in $map ){ `
-   $map_id.Add($work.ID); `
-   $map_name.Add($work.MAP_NAME);
-}
+#Measure-Command{ `
 
 foreach( $work in $mob ){  `
-   $i = [array]::IndexOf($map_id, $work.MAP); `
+   $i = [array]::IndexOf($map.MAP, $work.MAP); `
    if( $i -ne -1){
-      $work.MAP = $map_name[$i]; `
-      $mob_cnt.Add($work.count);
-   }
-   else{
-      $mob_cnt.Add( "" );
+      $work.MAP = $map[$i].MAP_NAME;
    }
 }
-
+#}
 #############################################################
 #Measure-Command{ `
 $newtable = New-Object 'System.Collections.Generic.List[System.String]';
-foreach($work in $ro2){ `
-#	$data = New-Object PSObject | Select-Object ID, NAME, MAP, ITEM1, ITEM2, ITEM3, ITEM4, ITEM5, ITEM6, ITEM7, ITEM8;
+foreach($work in $mob){ `
 
-#	$data.ID   = $work.ID;
-#	$data.NAME = $work.NAME;
-
-# ドロップ率をアイテム名に含める
-	if($work.drop_per1 -ne 0){ $item1 = $work.drop_item1 + " ("+ 0.01* $work.drop_per1 +"%)" }else{ $item1 = $work.drop_item1 }; `
-	if($work.drop_per2 -ne 0){ $item2 = $work.drop_item2 + " ("+ 0.01* $work.drop_per2 +"%)" }else{ $item2 = $work.drop_item2 }; `
-	if($work.drop_per3 -ne 0){ $item3 = $work.drop_item3 + " ("+ 0.01* $work.drop_per3 +"%)" }else{ $item3 = $work.drop_item3 }; `
-	if($work.drop_per4 -ne 0){ $item4 = $work.drop_item4 + " ("+ 0.01* $work.drop_per4 +"%)" }else{ $item4 = $work.drop_item4 }; `
-	if($work.drop_per5 -ne 0){ $item5 = $work.drop_item5 + " ("+ 0.01* $work.drop_per5 +"%)" }else{ $item5 = $work.drop_item5 }; `
-	if($work.drop_per6 -ne 0){ $item6 = $work.drop_item6 + " ("+ 0.01* $work.drop_per6 +"%)" }else{ $item6 = $work.drop_item6 }; `
-	if($work.drop_per7 -ne 0){ $item7 = $work.drop_item7 + " ("+ 0.01* $work.drop_per7 +"%)" }else{ $item7 = $work.drop_item7 }; `
-	if($work.drop_per8 -ne 0){ $item8 = $work.drop_item8 + " ("+ 0.01* $work.drop_per8 +"%)" }else{ $item8 = $work.drop_item8 }; `
-
-# マップ名にモンスター名とドロップ率を追加
-	$i = [array]::IndexOf($mob.ID, $work.ID); `
+# 06_monster_drop_item.csv と 03_monster_map.csv の一致するIDを検索
+	$i = [array]::IndexOf( $ro2.ID, $work.ID ); `
 	if( $i -ne -1){
-		$newtable.add( $work.ID + "," + $work.NAME + "," + "["+ $mob_cnt[$i] +"] / " + $mob[$i].MAP + "," + $item1 + "," + $item2 + "," + $item3 + "," + $item4 + "," + $item5 + "," + $item6 + "," + $item7 + "," + $item8 );
-	}
-	else{
-		$newtable.add( $work.ID + "," + $work.NAME + "," + ""                                       + "," + $item1 + "," + $item2 + "," + $item3 + "," + $item4 + "," + $item5 + "," + $item6 + "," + $item7 + "," + $item8 );
-	}
-#	$newtable += $data;
+
+# アイテム名にドロップ率を追加
+		if($ro2[$i].drop1 -ne 0){ $item1 = $ro2[$i].item1 + " ("+ 0.01* $ro2[$i].drop1 +"%)" }else{ $item1 = $ro2[$i].item1 }; `
+		if($ro2[$i].drop2 -ne 0){ $item2 = $ro2[$i].item2 + " ("+ 0.01* $ro2[$i].drop2 +"%)" }else{ $item2 = $ro2[$i].item2 }; `
+		if($ro2[$i].drop3 -ne 0){ $item3 = $ro2[$i].item3 + " ("+ 0.01* $ro2[$i].drop3 +"%)" }else{ $item3 = $ro2[$i].item3 }; `
+		if($ro2[$i].drop4 -ne 0){ $item4 = $ro2[$i].item4 + " ("+ 0.01* $ro2[$i].drop4 +"%)" }else{ $item4 = $ro2[$i].item4 }; `
+		if($ro2[$i].drop5 -ne 0){ $item5 = $ro2[$i].item5 + " ("+ 0.01* $ro2[$i].drop5 +"%)" }else{ $item5 = $ro2[$i].item5 }; `
+		if($ro2[$i].drop6 -ne 0){ $item6 = $ro2[$i].item6 + " ("+ 0.01* $ro2[$i].drop6 +"%)" }else{ $item6 = $ro2[$i].item6 }; `
+		if($ro2[$i].drop7 -ne 0){ $item7 = $ro2[$i].item7 + " ("+ 0.01* $ro2[$i].drop7 +"%)" }else{ $item7 = $ro2[$i].item7 }; `
+		if($ro2[$i].drop8 -ne 0){ $item8 = $ro2[$i].item8 + " ("+ 0.01* $ro2[$i].drop8 +"%)" }else{ $item8 = $ro2[$i].item8 }; `
+
+# マップ名にモンスター数を追加
+#		if( ($work.count -eq 0) -or ($work.count -eq "?") -or ($work.count -eq "") ){ 
+#			$mobmap = $work.MAP
+#		}
+#		else{
+#			$mobmap =  $work.MAP + "[" + $work.count + "]"
+#		}
+
+# 新しいテーブルに項目を追加
+#		$newtable.add( $work.ID + "," + $work.NAME + "," + $mobmap    + ","                     + $item1 + "," + $item2 + "," + $item3 + "," + $item4 + "," + $item5 + "," + $item6 + "," + $item7 + "," + $item8  );
+		$newtable.add(                  $work.MAP + ","  + $work.NAME + "," + $work.count + "," + $item1 + "," + $item2 + "," + $item3 + "," + $item4 + "," + $item5 + "," + $item6 + "," + $item7 + "," + $item8  );
+	} `
 }
 #}
 #############################################################
 # GUIで表示
-$newtable | ConvertFrom-Csv -Header "ID", "NAME", "MAP", "ITEM1", "ITEM2", "ITEM3", "ITEM4", "ITEM5", "ITEM6", "ITEM7", "ITEM8" | Out-GridView -wait
+#$newtable | ConvertFrom-Csv -Header "ID", "NAME", "MAP",          "ITEM1", "ITEM2", "ITEM3", "ITEM4", "ITEM5", "ITEM6", "ITEM7", "ITEM8" | Out-GridView -wait
+ $newtable | ConvertFrom-Csv -Header       "MAP", "NAME", "COUNT", "ITEM1", "ITEM2", "ITEM3", "ITEM4", "ITEM5", "ITEM6", "ITEM7", "ITEM8" | Out-GridView -wait
