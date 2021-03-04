@@ -108,25 +108,18 @@ else{
          if($ro2[$i].drop7 -ne 0){ $item7 = $ro2[$i].item7 + " ("+ 0.01* $ro2[$i].drop7 +"%)" }else{ $item7 = $ro2[$i].item7 }; `
          if($ro2[$i].drop8 -ne 0){ $item8 = $ro2[$i].item8 + " ("+ 0.01* $ro2[$i].drop8 +"%)" }else{ $item8 = $ro2[$i].item8 }; `
 
-   # マップ名にモンスター数を追加
-   #		if( ($work.count -eq 0) -or ($work.count -eq "?") -or ($work.count -eq "") ){ 
-   #			$mobmap = $work.MAP
-   #		}
-   #		else{
-   #			$mobmap =  $work.MAP + "[" + $work.count + "]"
-   #		}
- 
    # 新しいテーブルに項目を追加
          $newtable.add( $work.ID + "," + $work.MAP  + "," + $work.subMAP + "," + $work.NAME + "," + $work.count + "," + $item1 + "," + $item2 + "," + $item3 + "," + $item4 + "," + $item5 + "," + $item6 + "," + $item7 + "," + $item8  );
       } `
    }
    #}
 
+   #############################################################
    # csv に変換
    $newtable = $newtable | ConvertFrom-Csv -Header "ID", "MAPid", "MAP", "subMAP", "NAME", "COUNT", "ITEM1", "ITEM2", "ITEM3", "ITEM4", "ITEM5", "ITEM6", "ITEM7", "ITEM8"
    
    # マップ順でソートする場合
-   # $newtable = $newtable | sort-object MAPid,NAME
+   # $newtable = $newtable | MAPid,NAME
 
    # ファイルに出力
    $newtable | Export-Csv  -Encoding UTF8 -NoTypeInformation -Force -Path $csvfile99
