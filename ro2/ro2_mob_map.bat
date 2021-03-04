@@ -71,4 +71,5 @@ foreach( $work in $ro2 ){  `
 #}
 #############################################################
 # GUIで表示
+$ro2 = $ro2 | sort-object {[int]$_.COUNT} , NAME -Descending
 $ro2 | select-object "NAME","count","time","random","MAP","subMAP" | Out-GridView -wait
