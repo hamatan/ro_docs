@@ -500,7 +500,8 @@ function encode(tdata,ver){
 	code = code.replace(/aa/g,"1");
 
 	// コードVer付与
-	code = ver + "^" + code;
+	// 2023-04-16 バージョンとコードの区切りを追加
+	code = ver + "_" + code;
 
 	document.Msg.scode.value = code;
 	return code;
@@ -515,7 +516,9 @@ function decode(code,ver){
 //		for(i=0; i<50; i++) tdata[i] = 0;
 //		return tdata;
 //	}
-	code = code.substring(code.indexOf("^")+1);
+
+	// 2023-04-16 バージョンとコードの区切りを0から変更
+	code = code.substring(code.indexOf("_")+1);
 	code = code.replace(/9/g,"aaaaaaaaaa");
 	code = code.replace(/8/g,"aaaaaaaaa");
 	code = code.replace(/7/g,"aaaaaaaa");
