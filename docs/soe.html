@@ -117,8 +117,8 @@ var ETIS_M = 3;
 var FLTH_M = 5;
 var ELSH_M = 5;
 
-// ŠeƒXƒLƒ‹‚Ìƒtƒ‰ƒO
-// ƒ}ƒWƒVƒƒƒ“
+// å„ã‚¹ã‚­ãƒ«ã®ãƒ•ãƒ©ã‚°
+// ãƒžã‚¸ã‚·ãƒ£ãƒ³
 
 function CBLT_F(){
 	Point(CBLT_P,10,"CBLT");
@@ -247,7 +247,7 @@ function TSTM_F(){
 	}
 }
 
-// ƒZ[ƒW
+// ã‚»ãƒ¼ã‚¸
 function ADVB_F(){
 	Point(ADVB_P,10,"ADVB");
 	if(ADVB_P<2){
@@ -578,7 +578,7 @@ function HVDR_F(){
 }
 function ESTM_F(){	Point(ESTM_P,1, "ESTM");}
 
-// ƒvƒƒtƒFƒbƒT[
+// ãƒ—ãƒ­ãƒ•ã‚§ãƒƒã‚µãƒ¼
 function HPCV_F(){
 	Point(HPCV_P,5, "HPCV");
 	if(FTSP_P<1 && HPCV_P>0){
@@ -648,7 +648,7 @@ function DBCS_F(){
 	}
 }
 
-// ƒ\[ƒTƒ‰[
+// ã‚½ãƒ¼ã‚µãƒ©ãƒ¼
 function FRWK_F(){
 	Point(FRWK_P,5, "FRWK");
 	if(VLCN_P<1 && FRWK_P>0){
@@ -762,7 +762,7 @@ function ARLO_F(){
 	}
 }
 
-// ¸—ì
+// ç²¾éœŠ
 function SMAG_F(){
 	Point(SMAG_P,3, "SMAG");
 	if(SMAG_P<3){
@@ -913,7 +913,7 @@ function ELSH_F(){
 	}
 }
 
-// ƒCƒxƒ“ƒg
+// ã‚¤ãƒ™ãƒ³ãƒˆ
 function setPoint(parts,point){
 	if(parts == "CBLT") { if(point>=0 && point<=10) CBLT_P=point; CBLT_F(); }
 	if(parts == "FBLL") { if(point>=0 && point<=10) FBLL_P=point; FBLL_F(); }
@@ -1015,7 +1015,7 @@ function ShowPoint(){
 }
 
 
-//ƒRƒ“ƒgƒ[ƒ‹ŠÖ˜A
+//ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«é–¢é€£
 function Clear(){
 	CBLT_P = FBLL_P = FBLT_P = FRDV_P
 	= FTSP_P = FWLL_P = LBLT_P = NPBT_P
@@ -1060,7 +1060,7 @@ function Clear(){
 	ETIS_F();
 	FLTH_F(); ELSH_F();
 	ShowPoint();
-	setAlertLayer("‘S‚Ä‚Ìƒ|ƒCƒ“ƒg‚ðƒNƒŠƒA‚µ‚Ü‚µ‚½B",1);
+	setAlertLayer("å…¨ã¦ã®ãƒã‚¤ãƒ³ãƒˆã‚’ã‚¯ãƒªã‚¢ã—ã¾ã—ãŸã€‚",1);
 }
 
 function Save(mode){
@@ -1263,7 +1263,7 @@ function Load(mode){
 <form name="Msg" onsubmit="return false;">
 <nobr>
 
-“]EƒŒƒxƒ‹
+è»¢è·ãƒ¬ãƒ™ãƒ«
 <select name="jobchg1" onchange="JCHF_P=this.value; showMsg(3)">
 <option value="50" selected>Job50
 <option value="49">Job49
@@ -1277,7 +1277,7 @@ function Load(mode){
 <option value="41">Job41
 <option value="40">Job40
 </select>
-<b>„</b>
+<b>ï¼ž</b>
 <select name="jobchg2" onchange="JCHT_P=this.value; showMsg(3)">
 <option value="70" selected>Job70
 <option value="69">Job69
@@ -1301,16 +1301,16 @@ function Load(mode){
 <option value="51">Job51
 <option value="50">Job50
 </select>
-@
-–¼‘O <input type="text" name="chrName" id="chrNameId" maxlength=24 value="" title="ƒZ[ƒuƒXƒƒbƒg‚É–¼‘O‚ª‚Â‚«‚Ü‚·B" onblur="setNameForm();">
+ã€€
+åå‰ <input type="text" name="chrName" id="chrNameId" maxlength=24 value="" title="ã‚»ãƒ¼ãƒ–ã‚¹ãƒ­ãƒƒãƒˆã«åå‰ãŒã¤ãã¾ã™ã€‚" onblur="setNameForm();">
 <u>
-<a class="con" href="JavaScript:Save('cookie');"	title="Cookie‚É¡‚Ìó‘Ô‚ðƒZ[ƒu">Save</a>@
-<a class="con" href="JavaScript:Load('cookie');"	title="Cookie‚©‚çƒ[ƒh">Load</a>@
-<a class="con" href="JavaScript:Reset();"			title="ƒXƒLƒ‹ƒ|ƒCƒ“ƒg‚ðƒŠƒZƒbƒg‚µ‚Ü‚·B">Reset</a>@
-<a class="con" href="JavaScript:codeCopy();"		title="ƒXƒLƒ‹ƒR[ƒh•t‚ÌURL‚ðo—Í‚µ‚Ü‚·B">URL</a>@
-<a class="con" href="JavaScript:DeleteSlot();"		title="ƒZ[ƒuƒXƒƒbƒg‚ðÁ‹Ž‚µ‚Ü‚·B">Delete</a>@
-<a class="con" href="http://uniuni.dfz.jp/skill4/"	title="ƒgƒbƒvƒƒjƒ…[‚É”ò‚Ñ‚Ü‚·B">TopMenu</a>
-</u>@
+<a class="con" href="JavaScript:Save('cookie');"	title="Cookieã«ä»Šã®çŠ¶æ…‹ã‚’ã‚»ãƒ¼ãƒ–">Save</a>ã€€
+<a class="con" href="JavaScript:Load('cookie');"	title="Cookieã‹ã‚‰ãƒ­ãƒ¼ãƒ‰">Load</a>ã€€
+<a class="con" href="JavaScript:Reset();"			title="ã‚¹ã‚­ãƒ«ãƒã‚¤ãƒ³ãƒˆã‚’ãƒªã‚»ãƒƒãƒˆã—ã¾ã™ã€‚">Reset</a>ã€€
+<a class="con" href="JavaScript:codeCopy();"		title="ã‚¹ã‚­ãƒ«ã‚³ãƒ¼ãƒ‰ä»˜ã®URLã‚’å‡ºåŠ›ã—ã¾ã™ã€‚">URL</a>ã€€
+<a class="con" href="JavaScript:DeleteSlot();"		title="ã‚»ãƒ¼ãƒ–ã‚¹ãƒ­ãƒƒãƒˆã‚’æ¶ˆåŽ»ã—ã¾ã™ã€‚">Delete</a>ã€€
+<a class="con" href="http://uniuni.dfz.jp/skill4/"	title="ãƒˆãƒƒãƒ—ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«é£›ã³ã¾ã™ã€‚">TopMenu</a>
+</u>ã€€
 <select name="Data" style="width:200px;">
 <option value="1" selected>slot 1 : no save
 <option value="2">slot 2 : no save
@@ -1364,7 +1364,7 @@ function Load(mode){
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'CBLT')"
 	onmouseout="msout()">
-ƒR[ƒ‹ƒhƒ{ƒ‹ƒg
+ã‚³ãƒ¼ãƒ«ãƒ‰ãƒœãƒ«ãƒˆ
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1381,7 +1381,7 @@ function Load(mode){
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FBLL')"
 	onmouseout="msout()">
-ƒtƒ@ƒCƒA[ƒ{[ƒ‹
+ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼ãƒœãƒ¼ãƒ«
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1398,7 +1398,7 @@ function Load(mode){
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FBLT')"
 	onmouseout="msout()">
-ƒtƒ@ƒCƒA[ƒ{ƒ‹ƒg
+ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼ãƒœãƒ«ãƒˆ
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1415,7 +1415,7 @@ function Load(mode){
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FRDV')"
 	onmouseout="msout()">
-ƒtƒƒXƒgƒ_ƒCƒo[
+ãƒ•ãƒ­ã‚¹ãƒˆãƒ€ã‚¤ãƒãƒ¼
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1432,7 +1432,7 @@ function Load(mode){
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FTSP')"
 	onmouseout="msout()">
-SP‰ñ•œ—ÍŒüã
+SPå›žå¾©åŠ›å‘ä¸Š
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1449,7 +1449,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FWLL')"
 	onmouseout="msout()">
-ƒtƒ@ƒCƒA[ƒEƒH[ƒ‹
+ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼ã‚¦ã‚©ãƒ¼ãƒ«
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1466,7 +1466,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'LBLT')"
 	onmouseout="msout()">
-ƒ‰ƒCƒgƒjƒ“ƒOƒ{ƒ‹ƒg
+ãƒ©ã‚¤ãƒˆãƒ‹ãƒ³ã‚°ãƒœãƒ«ãƒˆ
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1483,7 +1483,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'NPBT')"
 	onmouseout="msout()">
-ƒiƒp[ƒ€ƒr[ƒg
+ãƒŠãƒ‘ãƒ¼ãƒ ãƒ“ãƒ¼ãƒˆ
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1500,7 +1500,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SFWL')"
 	onmouseout="msout()">
-ƒZƒCƒtƒeƒBƒEƒH[ƒ‹
+ã‚»ã‚¤ãƒ•ãƒ†ã‚£ã‚¦ã‚©ãƒ¼ãƒ«
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1517,7 +1517,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SGHT')"
 	onmouseout="msout()">
-ƒTƒCƒg
+ã‚µã‚¤ãƒˆ
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1534,7 +1534,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SLST')"
 	onmouseout="msout()">
-ƒ\ƒEƒ‹ƒXƒgƒ‰ƒCƒN
+ã‚½ã‚¦ãƒ«ã‚¹ãƒˆãƒ©ã‚¤ã‚¯
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1551,7 +1551,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'STCS')"
 	onmouseout="msout()">
-ƒXƒg[ƒ“ƒJ[ƒX
+ã‚¹ãƒˆãƒ¼ãƒ³ã‚«ãƒ¼ã‚¹
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1568,7 +1568,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'TSTM')"
 	onmouseout="msout()">
-ƒTƒ“ƒ_[ƒXƒg[ƒ€
+ã‚µãƒ³ãƒ€ãƒ¼ã‚¹ãƒˆãƒ¼ãƒ 
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1589,7 +1589,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ADVB')"
 	onmouseout="msout()">
-ƒAƒhƒoƒ“ƒXƒhƒuƒbƒN
+ã‚¢ãƒ‰ãƒãƒ³ã‚¹ãƒ‰ãƒ–ãƒƒã‚¯
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1606,7 +1606,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'CSTC')"
 	onmouseout="msout()">
-ƒLƒƒƒXƒgƒLƒƒƒ“ƒZƒ‹
+ã‚­ãƒ£ã‚¹ãƒˆã‚­ãƒ£ãƒ³ã‚»ãƒ«
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1623,7 +1623,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'MGRD')"
 	onmouseout="msout()">
-ƒ}ƒWƒbƒNƒƒbƒh
+ãƒžã‚¸ãƒƒã‚¯ãƒ­ãƒƒãƒ‰
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1640,7 +1640,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SPBR')"
 	onmouseout="msout()">
-ƒXƒyƒ‹ƒuƒŒƒCƒJ[
+ã‚¹ãƒšãƒ«ãƒ–ãƒ¬ã‚¤ã‚«ãƒ¼
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1657,7 +1657,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FRCS')"
 	onmouseout="msout()">
-ƒtƒŠ[ƒLƒƒƒXƒg
+ãƒ•ãƒªãƒ¼ã‚­ãƒ£ã‚¹ãƒˆ
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1674,7 +1674,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ATSP')"
 	onmouseout="msout()">
-ƒI[ƒgƒXƒyƒ‹
+ã‚ªãƒ¼ãƒˆã‚¹ãƒšãƒ«
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1691,7 +1691,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FRLC')"
 	onmouseout="msout()">
-ƒtƒŒƒCƒ€ƒ‰ƒ“ƒ`ƒƒ[
+ãƒ•ãƒ¬ã‚¤ãƒ ãƒ©ãƒ³ãƒãƒ£ãƒ¼
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1708,7 +1708,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FRWP')"
 	onmouseout="msout()">
-ƒtƒƒXƒgƒEƒFƒ|ƒ“
+ãƒ•ãƒ­ã‚¹ãƒˆã‚¦ã‚§ãƒãƒ³
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1725,7 +1725,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'LTLD')"
 	onmouseout="msout()">
-ƒ‰ƒCƒgƒjƒ“ƒOƒ[ƒ_[
+ãƒ©ã‚¤ãƒˆãƒ‹ãƒ³ã‚°ãƒ­ãƒ¼ãƒ€ãƒ¼
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1742,7 +1742,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SMWP')"
 	onmouseout="msout()">
-ƒTƒCƒYƒ~ƒbƒNƒEƒFƒ|ƒ“
+ã‚µã‚¤ã‚ºãƒŸãƒƒã‚¯ã‚¦ã‚§ãƒãƒ³
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1759,7 +1759,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'DRGN')"
 	onmouseout="msout()">
-ƒhƒ‰ƒSƒmƒƒW[
+ãƒ‰ãƒ©ã‚´ãƒŽãƒ­ã‚¸ãƒ¼
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1776,7 +1776,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'VLCN')"
 	onmouseout="msout()">
-ƒ{ƒ‹ƒP[ƒm
+ãƒœãƒ«ã‚±ãƒ¼ãƒŽ
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1793,7 +1793,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'DELG')"
 	onmouseout="msout()">
-ƒfƒŠƒ…[ƒW
+ãƒ‡ãƒªãƒ¥ãƒ¼ã‚¸
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1810,7 +1810,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'VLGL')"
 	onmouseout="msout()">
-ƒoƒCƒIƒŒƒ“ƒgƒQƒCƒ‹
+ãƒã‚¤ã‚ªãƒ¬ãƒ³ãƒˆã‚²ã‚¤ãƒ«
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1827,7 +1827,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'LDPR')"
 	onmouseout="msout()">
-ƒ‰ƒ“ƒhƒvƒƒeƒNƒ^[
+ãƒ©ãƒ³ãƒ‰ãƒ—ãƒ­ãƒ†ã‚¯ã‚¿ãƒ¼
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1844,7 +1844,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'DSPL')"
 	onmouseout="msout()">
-ƒfƒBƒXƒyƒ‹
+ãƒ‡ã‚£ã‚¹ãƒšãƒ«
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1861,7 +1861,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ABRA')"
 	onmouseout="msout()">
-ƒAƒuƒ‰ƒJƒ^ƒuƒ‰
+ã‚¢ãƒ–ãƒ©ã‚«ã‚¿ãƒ–ãƒ©
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1878,7 +1878,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ETSP',1)"
 	onmouseout="msout()">
-ƒA[ƒXƒXƒpƒCƒN
+ã‚¢ãƒ¼ã‚¹ã‚¹ãƒ‘ã‚¤ã‚¯
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1895,7 +1895,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'HVDR',1)"
 	onmouseout="msout()">
-ƒwƒuƒ“ƒYƒhƒ‰ƒCƒu
+ãƒ˜ãƒ–ãƒ³ã‚ºãƒ‰ãƒ©ã‚¤ãƒ–
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1912,7 +1912,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ESTM')"
 	onmouseout="msout()">
-ƒ‚ƒ“ƒXƒ^[î•ñ
+ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼æƒ…å ±
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1933,7 +1933,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'HPCV')"
 	onmouseout="msout()">
-¶–½—Í•ÏŠ·
+ç”Ÿå‘½åŠ›å¤‰æ›
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1950,7 +1950,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SLCH')"
 	onmouseout="msout()">
-ƒ\ƒEƒ‹ƒ`ƒFƒ“ƒW
+ã‚½ã‚¦ãƒ«ãƒã‚§ãƒ³ã‚¸
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1967,7 +1967,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SLBN')"
 	onmouseout="msout()">
-ƒ\ƒEƒ‹ƒo[ƒ“
+ã‚½ã‚¦ãƒ«ãƒãƒ¼ãƒ³
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -1984,7 +1984,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'MDBR')"
 	onmouseout="msout()">
-ƒ}ƒCƒ“ƒhƒuƒŒƒCƒJ[
+ãƒžã‚¤ãƒ³ãƒ‰ãƒ–ãƒ¬ã‚¤ã‚«ãƒ¼
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2001,7 +2001,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'MMRZ')"
 	onmouseout="msout()">
-ƒƒ‚ƒ‰ƒCƒY
+ãƒ¡ãƒ¢ãƒ©ã‚¤ã‚º
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2018,7 +2018,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'WLFG')"
 	onmouseout="msout()">
-ƒEƒH[ƒ‹ƒIƒuƒtƒHƒO
+ã‚¦ã‚©ãƒ¼ãƒ«ã‚ªãƒ–ãƒ•ã‚©ã‚°
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2035,7 +2035,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SPDW')"
 	onmouseout="msout()">
-ƒXƒpƒCƒ_[ƒEƒFƒu
+ã‚¹ãƒ‘ã‚¤ãƒ€ãƒ¼ã‚¦ã‚§ãƒ–
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2052,7 +2052,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'DBCS')"
 	onmouseout="msout()">
-ƒ_ƒuƒ‹ƒLƒƒƒXƒeƒBƒ“ƒO
+ãƒ€ãƒ–ãƒ«ã‚­ãƒ£ã‚¹ãƒ†ã‚£ãƒ³ã‚°
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2073,7 +2073,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FRWK')"
 	onmouseout="msout()">
-ƒtƒ@ƒCƒA[ƒEƒH[ƒN
+ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼ã‚¦ã‚©ãƒ¼ã‚¯
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2090,7 +2090,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ELWK')"
 	onmouseout="msout()">
-ƒGƒŒƒNƒgƒŠƒbƒNƒEƒH[ƒN
+ã‚¨ãƒ¬ã‚¯ãƒˆãƒªãƒƒã‚¯ã‚¦ã‚©ãƒ¼ã‚¯
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2107,7 +2107,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SFST')"
 	onmouseout="msout()">
-ƒXƒyƒ‹ƒtƒBƒXƒg
+ã‚¹ãƒšãƒ«ãƒ•ã‚£ã‚¹ãƒˆ
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2124,7 +2124,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'BCMX')"
 	onmouseout="msout()">
-ƒoƒLƒ…[ƒ€ƒGƒNƒXƒgƒŠ[ƒ€
+ãƒã‚­ãƒ¥ãƒ¼ãƒ ã‚¨ã‚¯ã‚¹ãƒˆãƒªãƒ¼ãƒ 
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2141,7 +2141,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'PSYW')"
 	onmouseout="msout()">
-ƒTƒCƒLƒbƒNƒEƒF[ƒu
+ã‚µã‚¤ã‚­ãƒƒã‚¯ã‚¦ã‚§ãƒ¼ãƒ–
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2158,7 +2158,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'CLKL')"
 	onmouseout="msout()">
-ƒNƒ‰ƒEƒhƒLƒ‹
+ã‚¯ãƒ©ã‚¦ãƒ‰ã‚­ãƒ«
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2175,7 +2175,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'PSBS')"
 	onmouseout="msout()">
-ƒ|ƒCƒYƒ“ƒoƒXƒ^[
+ãƒã‚¤ã‚ºãƒ³ãƒã‚¹ã‚¿ãƒ¼
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2192,7 +2192,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'STRK')"
 	onmouseout="msout()">
-ƒXƒgƒ‰ƒCƒLƒ“ƒO
+ã‚¹ãƒˆãƒ©ã‚¤ã‚­ãƒ³ã‚°
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2209,7 +2209,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'EAGR')"
 	onmouseout="msout()">
-ƒA[ƒXƒOƒŒƒCƒ”
+ã‚¢ãƒ¼ã‚¹ã‚°ãƒ¬ã‚¤ãƒ´
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2226,7 +2226,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'DMDS')"
 	onmouseout="msout()">
-ƒ_ƒCƒ„ƒ‚ƒ“ƒhƒ_ƒXƒg
+ãƒ€ã‚¤ãƒ¤ãƒ¢ãƒ³ãƒ‰ãƒ€ã‚¹ãƒˆ
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2243,7 +2243,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'WARM')"
 	onmouseout="msout()">
-ƒEƒH[ƒ}[
+ã‚¦ã‚©ãƒ¼ãƒžãƒ¼
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2260,7 +2260,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'VASP')"
 	onmouseout="msout()">
-ƒ”ƒFƒ‰ƒ`ƒ…[ƒ‹ƒXƒsƒA[
+ãƒ´ã‚§ãƒ©ãƒãƒ¥ãƒ¼ãƒ«ã‚¹ãƒ”ã‚¢ãƒ¼
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2277,7 +2277,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ARLO')"
 	onmouseout="msout()">
-ƒAƒ‹[ƒWƒ‡
+ã‚¢ãƒ«ãƒ¼ã‚¸ãƒ§
 </span>
 <tr><td width=114 height=12></td></tr>
 </table>
@@ -2298,7 +2298,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SMAG')"
 	onmouseout="msout()">
-ƒTƒ‚ƒ“ƒAƒOƒj
+ã‚µãƒ¢ãƒ³ã‚¢ã‚°ãƒ‹
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2316,7 +2316,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SMAQ')"
 	onmouseout="msout()">
-ƒTƒ‚ƒ“ƒAƒNƒA
+ã‚µãƒ¢ãƒ³ã‚¢ã‚¯ã‚¢
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2334,7 +2334,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SMVN')"
 	onmouseout="msout()">
-ƒTƒ‚ƒ“ƒxƒ“ƒgƒX
+ã‚µãƒ¢ãƒ³ãƒ™ãƒ³ãƒˆã‚¹
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2352,7 +2352,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'SMTR')"
 	onmouseout="msout()">
-ƒTƒ‚ƒ“ƒeƒ‰
+ã‚µãƒ¢ãƒ³ãƒ†ãƒ©
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2370,7 +2370,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ELCN')"
 	onmouseout="msout()">
-ƒGƒŒƒƒ“ƒ^ƒ‹ƒRƒ“ƒgƒ[ƒ‹
+ã‚¨ãƒ¬ãƒ¡ãƒ³ã‚¿ãƒ«ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2388,7 +2388,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ELAC')"
 	onmouseout="msout()">
-ƒGƒŒƒƒ“ƒ^ƒ‹ƒAƒNƒVƒ‡ƒ“
+ã‚¨ãƒ¬ãƒ¡ãƒ³ã‚¿ãƒ«ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2406,7 +2406,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ELAN')"
 	onmouseout="msout()">
-ƒGƒŒƒƒ“ƒ^ƒ‹ƒAƒiƒ‰ƒCƒVƒX
+ã‚¨ãƒ¬ãƒ¡ãƒ³ã‚¿ãƒ«ã‚¢ãƒŠãƒ©ã‚¤ã‚·ã‚¹
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2424,7 +2424,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ELSY')"
 	onmouseout="msout()">
-ƒGƒŒƒƒ“ƒ^ƒ‹ƒVƒ“ƒpƒV[
+ã‚¨ãƒ¬ãƒ¡ãƒ³ã‚¿ãƒ«ã‚·ãƒ³ãƒ‘ã‚·ãƒ¼
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2442,7 +2442,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ELCR')"
 	onmouseout="msout()">
-ƒGƒŒƒƒ“ƒ^ƒ‹ƒLƒ…ƒA[
+ã‚¨ãƒ¬ãƒ¡ãƒ³ã‚¿ãƒ«ã‚­ãƒ¥ã‚¢ãƒ¼
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2460,7 +2460,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FRIS')"
 	onmouseout="msout()">
-ƒtƒ@ƒCƒA[ƒCƒ“ƒVƒOƒjƒA
+ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼ã‚¤ãƒ³ã‚·ã‚°ãƒ‹ã‚¢
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2478,7 +2478,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'WTIS')"
 	onmouseout="msout()">
-ƒEƒH[ƒ^[ƒCƒ“ƒVƒOƒjƒA
+ã‚¦ã‚©ãƒ¼ã‚¿ãƒ¼ã‚¤ãƒ³ã‚·ã‚°ãƒ‹ã‚¢
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2496,7 +2496,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'WDIS')"
 	onmouseout="msout()">
-ƒEƒBƒ“ƒhƒCƒ“ƒVƒOƒjƒA
+ã‚¦ã‚£ãƒ³ãƒ‰ã‚¤ãƒ³ã‚·ã‚°ãƒ‹ã‚¢
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2514,7 +2514,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ETIS')"
 	onmouseout="msout()">
-ƒA[ƒXƒCƒ“ƒVƒOƒjƒA
+ã‚¢ãƒ¼ã‚¹ã‚¤ãƒ³ã‚·ã‚°ãƒ‹ã‚¢
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2532,7 +2532,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'FLTH')"
 	onmouseout="msout()">
-ƒtƒ‹ƒXƒƒbƒgƒ‹
+ãƒ•ãƒ«ã‚¹ãƒ­ãƒƒãƒˆãƒ«
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>
@@ -2550,7 +2550,7 @@ SP‰ñ•œ—ÍŒüã
 <span class="help"
 	onmouseover="msovr(event.clientX,event.clientY,'ELSH')"
 	onmouseout="msout()">
-ƒGƒŒƒƒ“ƒ^ƒ‹ƒV[ƒ‹ƒh
+ã‚¨ãƒ¬ãƒ¡ãƒ³ã‚¿ãƒ«ã‚·ãƒ¼ãƒ«ãƒ‰
 </span>
 </td></tr>
 <tr><td width=114 height=12></td></tr>

@@ -126,24 +126,24 @@ function showMsg(type){
 		disp2 = jobp2;
 			if(subp1 != 0 || use2 >= maxjob) disp2 = jobp2 + "<span style='font-size:10px;'> (" + subp1 + "+" + use2 + ") </span>";
 
-	// ƒ|ƒCƒ“ƒg–¢ˆ—
+	// ãƒã‚¤ãƒ³ãƒˆæœªå‡¦ç†æ™‚
 		if(use1 +1 < jobchange1) disp1 = "<span style='color:#aa0033;'>" + disp1 + "</span>";
 		if(use2 + 1 < maxjob - subp1) disp2 = "<span style='color:#aa0033;'>" + disp2 + "</span>";
 
 		if(use1 + use2 + 2 <= jobchange1 + maxjob){
 			document.getElementById("msgid").style.backgroundColor = "#ffffff";
 			document.getElementById("msgid").innerHTML = " 1st: " + disp1
-				+ "/" + jobchange1 + "@2nd: " + disp2
-				+ "/" + maxjob + "@rest : " + eval( rest1 + rest2 );
+				+ "/" + jobchange1 + "ã€€2nd: " + disp2
+				+ "/" + maxjob + "ã€€rest : " + eval( rest1 + rest2 );
 		}if(use1 + use2 + 2 > jobchange1 + maxjob || use2 + 1 > maxjob){
 			document.getElementById("msgid").style.backgroundColor = "#ffdddd";
 			document.getElementById("msgid").innerHTML = " 1st: " + disp1
-				+ "/" + jobchange1 + "@2nd: " + disp2
-				+ "/" + maxjob + "@over: " + eval( (use1 + use2 + 2) + (rest1 + rest2) - (jobchange1 + maxjob) );
+				+ "/" + jobchange1 + "ã€€2nd: " + disp2
+				+ "/" + maxjob + "ã€€over: " + eval( (use1 + use2 + 2) + (rest1 + rest2) - (jobchange1 + maxjob) );
 		}
 	}
 
-// 2023-03-26 OŸE’Ç‹L (Œ³‚Ìtype4‚ğlŸE‚É‚µ‚½‚Ì‚ÅAtype3 ‚Ì maxjob3 ‚ğ70‚É•ÏX) 
+// 2023-03-26 ä¸‰æ¬¡è·è¿½è¨˜ (å…ƒã®type4ã‚’å››æ¬¡è·ã«ã—ãŸã®ã§ã€type3 ã® maxjob3 ã‚’70ã«å¤‰æ›´) 
 	if(type == 2 || type == 3){
 		if(type == 2) maxjob3 = 50;
 		if(type == 3) maxjob3 = 70;
@@ -180,7 +180,7 @@ function showMsg(type){
 		disp3 = jobp3;
 			if(subp2 != 0 || subp3 != 0 || use3 >= maxjob3) disp3 = jobp3 + "<span style='font-size:10px;'> (" + subp2 + "+" + subp3 + "+" + use3 + ") </span>";
 
-	// ƒ|ƒCƒ“ƒg–¢ˆ—
+	// ãƒã‚¤ãƒ³ãƒˆæœªå‡¦ç†æ™‚
 		if(use1 +1 < jobchange1) disp1 = "<span style='color:#aa0033;'>" + disp1 + "</span>";
 		if(use2 + 1 < jobchange2 - subp1) disp2 = "<span style='color:#aa0033;'>" + disp2 + "</span>";
 		if(use3 + 1 < maxjob3 - subp2 - subp3) disp3 = "<span style='color:#aa0033;'>" + disp3 + "</span>";
@@ -188,32 +188,32 @@ function showMsg(type){
 		if(use1 + use2 + use3 + 3 <= jobchange1 + jobchange2 + maxjob3 && use3 < maxjob3){
 			document.getElementById("msgid").style.backgroundColor = "#ffffff";
 			document.getElementById("msgid").innerHTML = " 1st: " + disp1
-				+ "/" + jobchange1 + "@2nd: " + disp2
-				+ "/" + jobchange2 + "@3rd: " + disp3
-				+ "/"+maxjob3+"@rest: " + eval( (rest1 + rest2 +rest3) );
+				+ "/" + jobchange1 + "ã€€2nd: " + disp2
+				+ "/" + jobchange2 + "ã€€3rd: " + disp3
+				+ "/"+maxjob3+"ã€€rest: " + eval( (rest1 + rest2 +rest3) );
 		}if(use1 + use2 + use3 + 3 > jobchange1 + jobchange2 + maxjob3 && use3 < maxjob3){
 			document.getElementById("msgid").style.backgroundColor = "#ffdddd";
 			document.getElementById("msgid").innerHTML = " 1st: " + disp1
-				+ "/" + jobchange1 + "@2nd: " + disp2
-				+ "/" + jobchange2 + "@3rd: " + disp3
-				+ "/"+maxjob3+"@over: " + eval( (use1 + use2 + use3 + 3) + (rest1 + rest2 +rest3) - (jobchange1 + jobchange2 + maxjob3) );
+				+ "/" + jobchange1 + "ã€€2nd: " + disp2
+				+ "/" + jobchange2 + "ã€€3rd: " + disp3
+				+ "/"+maxjob3+"ã€€over: " + eval( (use1 + use2 + use3 + 3) + (rest1 + rest2 +rest3) - (jobchange1 + jobchange2 + maxjob3) );
 		}if(use2 + use3 + 2 > jobchange2 + maxjob3){
 			document.getElementById("msgid").style.backgroundColor = "#ffdddd";
 			document.getElementById("msgid").innerHTML = " 1st: " + disp1
-				+ "/" + jobchange1 + "@2nd: " + disp2
-				+ "/" + jobchange2 + "@3rd: " + disp3
-				+ "/"+maxjob3+"@over: " + eval( (use1 + use2 + use3 + 3) + (rest1 + rest2 +rest3) - (jobchange1 + jobchange2 + maxjob3) );
+				+ "/" + jobchange1 + "ã€€2nd: " + disp2
+				+ "/" + jobchange2 + "ã€€3rd: " + disp3
+				+ "/"+maxjob3+"ã€€over: " + eval( (use1 + use2 + use3 + 3) + (rest1 + rest2 +rest3) - (jobchange1 + jobchange2 + maxjob3) );
 		}if(use3 +1 > maxjob3 ){
 			document.getElementById("msgid").style.backgroundColor = "#ffdddd";
 			document.getElementById("msgid").innerHTML = " 1st: " + disp1
-				+ "/" + jobchange1 + "@2nd: " + disp2
-				+ "/" + jobchange2 + "@3rd: " + disp3
-				+ "/"+maxjob3+"@over: " + eval( (use1 + use2 + use3 + 3) + (rest1 + rest2 +rest3) - (jobchange1 + jobchange2 + maxjob3) );
+				+ "/" + jobchange1 + "ã€€2nd: " + disp2
+				+ "/" + jobchange2 + "ã€€3rd: " + disp3
+				+ "/"+maxjob3+"ã€€over: " + eval( (use1 + use2 + use3 + 3) + (rest1 + rest2 +rest3) - (jobchange1 + jobchange2 + maxjob3) );
 		}
 	}
 
-// 2023-03-26 lŸE’Ç‰Á (type4 ‚Ì maxjob3 ‚ğ70Amaxjob4 ‚ğ40‚ÉŒÅ’è) 
-// 2023-04-15 lŸE‚Ì maxjob4 ‚ğ‘I‘ğ®‚É•ÏX
+// 2023-03-26 å››æ¬¡è·è¿½åŠ  (type4 ã® maxjob3 ã‚’70ã€maxjob4 ã‚’40ã«å›ºå®š) 
+// 2023-04-15 å››æ¬¡è·ã® maxjob4 ã‚’é¸æŠå¼ã«å¤‰æ›´
 	if(type >= 4){
 		maxjob3 = 70;
 //		maxjob4 = 40;
@@ -232,40 +232,40 @@ function showMsg(type){
 			}
 		}
 
-//	if( “ñŸEg—pƒ|ƒCƒ“ƒˆ <= ( “ñŸEÅ‘åJobLv - ˆêŸE•s‘«ƒ|ƒCƒ“ƒˆ ) ){
+//	if( äºŒæ¬¡è·ä½¿ç”¨ãƒã‚¤ãƒ³ãƒ¨ <= ( äºŒæ¬¡è·æœ€å¤§JobLv - ä¸€æ¬¡è·ä¸è¶³ãƒã‚¤ãƒ³ãƒ¨ ) ){
 		if(use2 <= (jobchange2 - 1) - subp1){
 			jobp2 = use2 + 1 + subp1;
 			rest2 = (jobchange2 - 1) - subp1 - use2;
 		}
 
-//	if( “ñŸEg—pƒ|ƒCƒ“ƒˆ > ( “ñŸEÅ‘åJobLv - ˆêŸE•s‘«ƒ|ƒCƒ“ƒˆ ) ){
+//	if( äºŒæ¬¡è·ä½¿ç”¨ãƒã‚¤ãƒ³ãƒ¨ > ( äºŒæ¬¡è·æœ€å¤§JobLv - ä¸€æ¬¡è·ä¸è¶³ãƒã‚¤ãƒ³ãƒ¨ ) ){
 		if(use2 > (jobchange2 - 1) - subp1){
 			jobp2 = jobchange2;
 			rest2 = 0;
 			subp3 = use2 + 1 - subp1 - jobchange2;
 		}
 
-//	if( OŸEg—pƒ|ƒCƒ“ƒˆ <= ( OŸEÅ‘åJobLv - ˆêŸE•s‘« - “ñŸE•s‘« ) ){
+//	if( ä¸‰æ¬¡è·ä½¿ç”¨ãƒã‚¤ãƒ³ãƒ¨ <= ( ä¸‰æ¬¡è·æœ€å¤§JobLv - ä¸€æ¬¡è·ä¸è¶³ - äºŒæ¬¡è·ä¸è¶³ ) ){
 		if(use3 <= maxjob3 -1 - subp2 - subp3){
 			jobp3 = use3 + 1 + subp2 + subp3;
 			rest3 = (maxjob3 - 1 ) - subp2 - subp3 - use3;
 		}
 
-//	if( OŸEg—pƒ|ƒCƒ“ƒˆ > ( OŸEÅ‘åJobLv - ˆêŸE•s‘« - “ñŸE•s‘« ) ){
+//	if( ä¸‰æ¬¡è·ä½¿ç”¨ãƒã‚¤ãƒ³ãƒ¨ > ( ä¸‰æ¬¡è·æœ€å¤§JobLv - ä¸€æ¬¡è·ä¸è¶³ - äºŒæ¬¡è·ä¸è¶³ ) ){
 		if(use3 > maxjob3 -1 - subp2 - subp3){
 			jobp3 = maxjob3;
 			rest3 = 0;
 			subp4 = use3 + subp3 + subp2 - ( maxjob3 - 1);
 		}
 
-// 	lŸEƒ|ƒCƒ“ƒg
-//	if( lŸEg—pƒ|ƒCƒ“ƒˆ < ( lŸEÅ‘åJobLv - ˆêŸE•s‘« - “ñŸE•s‘« - OŸE•s‘« ) ){
+// 	å››æ¬¡è·ãƒã‚¤ãƒ³ãƒˆ
+//	if( å››æ¬¡è·ä½¿ç”¨ãƒã‚¤ãƒ³ãƒ¨ < ( å››æ¬¡è·æœ€å¤§JobLv - ä¸€æ¬¡è·ä¸è¶³ - äºŒæ¬¡è·ä¸è¶³ - ä¸‰æ¬¡è·ä¸è¶³ ) ){
 		if(use4 <= maxjob4 -1 - subp4){
 			jobp4 = use4 + 1 + subp4;
 			rest4 = maxjob4 - 1 - subp4 - use4;
 		}
 
-//	if( lŸEg—pƒ|ƒCƒ“ƒˆ > ( lŸEÅ‘åJobLv - ˆêŸE•s‘« - “ñŸE•s‘« - OŸE•s‘« ) ){
+//	if( å››æ¬¡è·ä½¿ç”¨ãƒã‚¤ãƒ³ãƒ¨ > ( å››æ¬¡è·æœ€å¤§JobLv - ä¸€æ¬¡è·ä¸è¶³ - äºŒæ¬¡è·ä¸è¶³ - ä¸‰æ¬¡è·ä¸è¶³ ) ){
 		if(use4 > maxjob4 -1 - subp4){
 			jobp4 = maxjob4;
 			rest4 = 0;
@@ -273,70 +273,70 @@ function showMsg(type){
 
 		disp1 = jobp1;
 		disp2 = jobp2;
-//			if(  ( ˆêŸ•s‘«•ª ){ disp2 = span ˆêŸ•s‘« + “ñŸg—p span }
+//			if(  ( ä¸€æ¬¡ä¸è¶³åˆ† ){ disp2 = span ä¸€æ¬¡ä¸è¶³ + äºŒæ¬¡ä½¿ç”¨ span }
 			if(subp1 != 0) disp2 = jobp2 + "<span style='font-size:10px;'> (" + subp1 + "+" + use2 + ") </span>";
 		disp3 = jobp3;
-//			if(  ( ˆêŸ•s‘«•ª || “ñŸ•s‘« || OŸg—p ) >= OŸÅ‘å ){ disp3 = OŸg—p + span ˆêŸ•s‘« + “ñŸ•s‘« + OŸ•s‘« span }
+//			if(  ( ä¸€æ¬¡ä¸è¶³åˆ† || äºŒæ¬¡ä¸è¶³ || ä¸‰æ¬¡ä½¿ç”¨ ) >= ä¸‰æ¬¡æœ€å¤§ ){ disp3 = ä¸‰æ¬¡ä½¿ç”¨ + span ä¸€æ¬¡ä¸è¶³ + äºŒæ¬¡ä¸è¶³ + ä¸‰æ¬¡ä¸è¶³ span }
 			if(subp2 != 0 || subp3 != 0 || use3 >= maxjob3) disp3 = jobp3 + "<span style='font-size:10px;'> (" + subp2 + "+" + subp3 + "+" + use3 + ") </span>";
 		disp4 = jobp4;
-//			if(  ( ˆêŸ•s‘«•ª || “ñŸ•s‘« || OŸ•s‘« || lŸg—p ) >= lŸÅ‘å ){ disp4 = span ˆêŸ•s‘« + “ñŸ•s‘« + OŸ•s‘« + lŸg—p span }
+//			if(  ( ä¸€æ¬¡ä¸è¶³åˆ† || äºŒæ¬¡ä¸è¶³ || ä¸‰æ¬¡ä¸è¶³ || å››æ¬¡ä½¿ç”¨ ) >= å››æ¬¡æœ€å¤§ ){ disp4 = span ä¸€æ¬¡ä¸è¶³ + äºŒæ¬¡ä¸è¶³ + ä¸‰æ¬¡ä¸è¶³ + å››æ¬¡ä½¿ç”¨ span }
 			if(subp4 != 0 || use4 >= maxjob4) disp4 = jobp4 + "<span style='font-size:10px;'> (" + subp2 + "+" + subp3 + "+" + (subp4 - subp3 - subp2) + "+" + use4 + ") </span>";
 
-	// ƒ|ƒCƒ“ƒg–¢ˆ—
+	// ãƒã‚¤ãƒ³ãƒˆæœªå‡¦ç†æ™‚
 		if(use1 + 1 < jobchange1) 		disp1 = "<span style='color:#aa0033;'>" + disp1 + "</span>";
 		if(use2 + 1 < jobchange2 - subp1) 	disp2 = "<span style='color:#aa0033;'>" + disp2 + "</span>";
 		if(use3 + 1 < maxjob3 - subp2 - subp3) 	disp3 = "<span style='color:#aa0033;'>" + disp3 + "</span>";
 		if(use4 + 1 < maxjob4 - subp4)          disp4 = "<span style='color:#aa0033;'>" + disp4 + "</span>";
 
-// 		if(  Á”ïƒ|ƒCƒ“ƒˆ‡Œv <=  Å‘åJobLv‡Œv ) && (  lŸEÁ”ïƒ|ƒCƒ“ƒˆ < Å‘ålŸEJobLv  ) ‚Ì’Êí•\¦
+// 		if(  æ¶ˆè²»ãƒã‚¤ãƒ³ãƒ¨åˆè¨ˆ <=  æœ€å¤§JobLvåˆè¨ˆ ) && (  å››æ¬¡è·æ¶ˆè²»ãƒã‚¤ãƒ³ãƒ¨ < æœ€å¤§å››æ¬¡è·JobLv  ) ã®é€šå¸¸è¡¨ç¤º
 		if( (use1 + use2 + use3 + use4 + 4 <= jobchange1 + jobchange2 + maxjob3 + maxjob4) && (use4 < maxjob4) ){
 			document.getElementById("msgid").style.backgroundColor = "#ffffff";
 			document.getElementById("msgid").innerHTML = 
 				" 1st: " + disp1 + "/" + jobchange1 + 
-				"@2nd: " + disp2+ "/" + jobchange2 + 
-				"@3rd: " + disp3+ "/" + maxjob3 +
-				"@4th: " + disp4+ "/" + maxjob4 +
-				"@rest: " + eval( (rest1 + rest2 +rest3 +rest4) );
+				"ã€€2nd: " + disp2+ "/" + jobchange2 + 
+				"ã€€3rd: " + disp3+ "/" + maxjob3 +
+				"ã€€4th: " + disp4+ "/" + maxjob4 +
+				"ã€€rest: " + eval( (rest1 + rest2 +rest3 +rest4) );
 		}
-// 		if(  Á”ïƒ|ƒCƒ“ƒˆ‡Œv  >  Å‘åJobLv‡Œv ) && (  lŸEÁ”ïƒ|ƒCƒ“ƒˆ < Å‘ålŸEJobLv  )  ‚Ìê‡‚ÌƒGƒ‰[•\¦
+// 		if(  æ¶ˆè²»ãƒã‚¤ãƒ³ãƒ¨åˆè¨ˆ  >  æœ€å¤§JobLvåˆè¨ˆ ) && (  å››æ¬¡è·æ¶ˆè²»ãƒã‚¤ãƒ³ãƒ¨ < æœ€å¤§å››æ¬¡è·JobLv  )  ã®å ´åˆã®ã‚¨ãƒ©ãƒ¼è¡¨ç¤º
 		if( (use1 + use2 + use3 + use4 + 4 > jobchange1 + jobchange2 + maxjob3 + maxjob4) && (use4 < maxjob4) ){
 			document.getElementById("msgid").style.backgroundColor = "#ffdddd";
 			document.getElementById("msgid").innerHTML = 
 				" 1st: " + disp1 + "/" + jobchange1 + 
-				"@2nd: " + disp2+ "/" + jobchange2 + 
-				"@3rd: " + disp3+ "/"+maxjob3 +
-				"@4th: " + disp4+ "/"+maxjob4 +
-				"@over: " + eval( (use1 + use2 + use3 + use4 + 4) + (rest1 + rest2 +rest3 +rest4) - (jobchange1 + jobchange2 + maxjob3 + maxjob4) );
+				"ã€€2nd: " + disp2+ "/" + jobchange2 + 
+				"ã€€3rd: " + disp3+ "/"+maxjob3 +
+				"ã€€4th: " + disp4+ "/"+maxjob4 +
+				"ã€€over: " + eval( (use1 + use2 + use3 + use4 + 4) + (rest1 + rest2 +rest3 +rest4) - (jobchange1 + jobchange2 + maxjob3 + maxjob4) );
 		}
-// 		if(  “]¶ƒ|ƒCƒ“ƒˆÁ”ï‡Œv  >  “]¶JobLv‡Œv ) ‚Ìê‡‚ÌƒGƒ‰[•\¦
+// 		if(  è»¢ç”Ÿãƒã‚¤ãƒ³ãƒ¨æ¶ˆè²»åˆè¨ˆ  >  è»¢ç”ŸJobLvåˆè¨ˆ ) ã®å ´åˆã®ã‚¨ãƒ©ãƒ¼è¡¨ç¤º
 		if(use2 + use3 + use4 + 3 > jobchange2 + maxjob3 + maxjob4){
 			document.getElementById("msgid").style.backgroundColor = "#ffdddd";
 			document.getElementById("msgid").innerHTML = 
 				" 1st: " + disp1+ "/" + jobchange1 + 
-				"@2nd: " + disp2+ "/" + jobchange2 + 
-				"@3rd: " + disp3+ "/" + maxjob3 +
-				"@4th: " + disp4+ "/"+maxjob4 +
-				"@over: " + eval( (use1 + use2 + use3 + use4 + 4) + (rest1 + rest2 +rest3 +rest4) - (jobchange1 + jobchange2 + maxjob3 + maxjob4) );
+				"ã€€2nd: " + disp2+ "/" + jobchange2 + 
+				"ã€€3rd: " + disp3+ "/" + maxjob3 +
+				"ã€€4th: " + disp4+ "/"+maxjob4 +
+				"ã€€over: " + eval( (use1 + use2 + use3 + use4 + 4) + (rest1 + rest2 +rest3 +rest4) - (jobchange1 + jobchange2 + maxjob3 + maxjob4) );
 		}
-// 		if(  OŸlŸƒ|ƒCƒ“ƒˆÁ”ï‡Œv  >  OŸlŸÅ‘åJobLv‡Œv ) ‚Ìê‡‚ÌƒGƒ‰[•\¦
+// 		if(  ä¸‰æ¬¡å››æ¬¡ãƒã‚¤ãƒ³ãƒ¨æ¶ˆè²»åˆè¨ˆ  >  ä¸‰æ¬¡å››æ¬¡æœ€å¤§JobLvåˆè¨ˆ ) ã®å ´åˆã®ã‚¨ãƒ©ãƒ¼è¡¨ç¤º
 		if(use3 + use4 + 2 > maxjob3 + maxjob4 ){
 			document.getElementById("msgid").style.backgroundColor = "#ffdddd";
 			document.getElementById("msgid").innerHTML = 
 				" 1st: " + disp1+ "/" + jobchange1 + 
-				"@2nd: " + disp2+ "/" + jobchange2 + 
-				"@3rd: " + disp3+ "/" + maxjob3 +
-				"@4th: " + disp4+ "/"+maxjob4 +
-				"@over: " + eval( (use1 + use2 + use3 + use4 + 4) + (rest1 + rest2 +rest3 +rest4) - (jobchange1 + jobchange2 + maxjob3 + maxjob4) );
+				"ã€€2nd: " + disp2+ "/" + jobchange2 + 
+				"ã€€3rd: " + disp3+ "/" + maxjob3 +
+				"ã€€4th: " + disp4+ "/"+maxjob4 +
+				"ã€€over: " + eval( (use1 + use2 + use3 + use4 + 4) + (rest1 + rest2 +rest3 +rest4) - (jobchange1 + jobchange2 + maxjob3 + maxjob4) );
 		}
-// 		if(  lŸƒ|ƒCƒ“ƒˆÁ”ï  >  lŸÅ‘åJobLv ) ‚Ìê‡‚ÌƒGƒ‰[•\¦
+// 		if(  å››æ¬¡ãƒã‚¤ãƒ³ãƒ¨æ¶ˆè²»  >  å››æ¬¡æœ€å¤§JobLv ) ã®å ´åˆã®ã‚¨ãƒ©ãƒ¼è¡¨ç¤º
 		if(use4 + 1 > maxjob4 ){
 			document.getElementById("msgid").style.backgroundColor = "#ffdddd";
 			document.getElementById("msgid").innerHTML = 
 				" 1st: " + disp1+ "/" + jobchange1 + 
-				"@2nd: " + disp2+ "/" + jobchange2 + 
-				"@3rd: " + disp3+ "/" + maxjob3 +
-				"@4th: " + disp4+ "/"+maxjob4 +
-				"@over: " + eval( (use1 + use2 + use3 + use4 + 4) + (rest1 + rest2 +rest3 +rest4) - (jobchange1 + jobchange2 + maxjob3 + maxjob4) );
+				"ã€€2nd: " + disp2+ "/" + jobchange2 + 
+				"ã€€3rd: " + disp3+ "/" + maxjob3 +
+				"ã€€4th: " + disp4+ "/"+maxjob4 +
+				"ã€€over: " + eval( (use1 + use2 + use3 + use4 + 4) + (rest1 + rest2 +rest3 +rest4) - (jobchange1 + jobchange2 + maxjob3 + maxjob4) );
 		}
 	}
 }
@@ -378,7 +378,7 @@ function Init(){
 	for(i=0;i<32;i++)
 		slotdata[i] = tmp.split("\|")[i];
 
-// ƒXƒƒbƒgƒZƒŒƒNƒg
+// ã‚¹ãƒ­ãƒƒãƒˆã‚»ãƒ¬ã‚¯ãƒˆ
 	latestSlotNum = 0;
 	for(i=30;i>0;i--){
 		if(slotdata[i].split(":")[0] == "")
@@ -439,8 +439,8 @@ function Save2(code){
 	slotclass = tmp.substring(tmp.indexOf(" : ")+4,tmp.indexOf(" : ")+7);
 
 	if(slotclass != job && tmp.indexOf(" : no save") == -1){
-		setAlertLayer("<br><br><br><br>w’è‚µ‚½ƒXƒƒbƒg‚É‚ÍˆÙ‚È‚éE‹Æ‚Ìƒf[ƒ^‚ª‚ ‚è‚Ü‚·B<br>ã‘‚«‚µ‚Ä‚æ‚ë‚µ‚¢‚Å‚·‚©H<br><br><br>"
-			+ "<form><input type='button' value='@OK@' onclick='Save3(code);'>@@"
+		setAlertLayer("<br><br><br><br>æŒ‡å®šã—ãŸã‚¹ãƒ­ãƒƒãƒˆã«ã¯ç•°ãªã‚‹è·æ¥­ã®ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã™ã€‚<br>ä¸Šæ›¸ãã—ã¦ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ<br><br><br>"
+			+ "<form><input type='button' value='ã€€OKã€€' onclick='Save3(code);'>ã€€ã€€"
 			+ "<input type='button' value='CANSEL' onclick='offOptionLayer();'></form>",0);
 	}else{
 		Save3(code);
@@ -456,9 +456,9 @@ function Save3(code){
 	if(document.Msg.chrName.value == ""){
 		slotname = "";
 	}else{
-		slotname = (document.Msg.chrName.value).replace(/:/g,"F");
-		slotname = (document.Msg.chrName.value).replace(/&/g,"•");
-		slotname = (document.Msg.chrName.value).replace(/\|/g,"b");
+		slotname = (document.Msg.chrName.value).replace(/:/g,"ï¼š");
+		slotname = (document.Msg.chrName.value).replace(/&/g,"ï¼†");
+		slotname = (document.Msg.chrName.value).replace(/\|/g,"ï½œ");
 	}
 	document.Msg.Data.options[document.Msg.Data.selectedIndex].text = "slot " + num + " : (" + job + ") " + slotname;
 	document.Msg.Data.options[document.Msg.Data.selectedIndex].style.backgroundColor = "#ffffff";
@@ -470,12 +470,12 @@ function Save3(code){
 		tmp += slotdata[i] + "\|";
 	}
 	document.cookie = "ro4=" + tmp + "; expires=Fri, 31-Dec-2030 23:59:59; ";
-	setAlertLayer("Slot"+num+" ‚ÉƒZ[ƒu‚µ‚Ü‚µ‚½B",1);
+	setAlertLayer("Slot"+num+" ã«ã‚»ãƒ¼ãƒ–ã—ã¾ã—ãŸã€‚",1);
 }
 
 function codeCopy(){
 	tmp2 = "http://uniuni.dfz.jp/skill4/"+job+".html?"+Save("scode");
-	setAlertLayer("<br><br><br><br>ˆÈ‰º‚ÌURL‚ğo—Í‚µ‚Ü‚µ‚½B<br>i‘I‘ğ‚µ‚Ä‰EƒNƒŠƒbƒN‚µAƒƒjƒ…[‚©‚çƒRƒs[‚µ‚Ä‚­‚¾‚³‚¢j<br><br><br>"
+	setAlertLayer("<br><br><br><br>ä»¥ä¸‹ã®URLã‚’å‡ºåŠ›ã—ã¾ã—ãŸã€‚<br>ï¼ˆé¸æŠã—ã¦å³ã‚¯ãƒªãƒƒã‚¯ã—ã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‹ã‚‰ã‚³ãƒ”ãƒ¼ã—ã¦ãã ã•ã„ï¼‰<br><br><br>"
 		+ "<form><input type='text' value='"
 		+ tmp2 + "' onfocus='this.select();' onclick='this.select();' size=60 readonly></form>",0);
 }
@@ -499,7 +499,7 @@ function encode(tdata,ver){
 	code = code.replace(/aaa/g,"2");
 	code = code.replace(/aa/g,"1");
 
-	// ƒR[ƒhVer•t—^
+	// ã‚³ãƒ¼ãƒ‰Verä»˜ä¸
 	code = ver + "^" + code;
 
 	document.Msg.scode.value = code;
@@ -508,10 +508,10 @@ function encode(tdata,ver){
 
 function decode(code,ver){
 	var tdata = new Array();
-	// ƒR[ƒhVerƒ`ƒFƒbƒN
+	// ã‚³ãƒ¼ãƒ‰Verãƒã‚§ãƒƒã‚¯
 	code_ver = code.substring(0,2);
 //	if(code_ver != ver){
-//		setAlertLayer("•s³‚ÈƒR[ƒhA‚ ‚é‚¢‚ÍˆÙ‚È‚éƒo[ƒWƒ‡ƒ“‚ÌƒR[ƒh‚Å‚·BÅVƒo[ƒWƒ‡ƒ“‚ÌƒR[ƒh‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B<br>iƒXƒLƒ‹\¬‚Ì•ÏX“™‚Ì——R‚É‚æ‚èƒo[ƒWƒ‡ƒ“‚ª•Ï‚í‚è‚Ü‚·Bj");
+//		setAlertLayer("ä¸æ­£ãªã‚³ãƒ¼ãƒ‰ã€ã‚ã‚‹ã„ã¯ç•°ãªã‚‹ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®ã‚³ãƒ¼ãƒ‰ã§ã™ã€‚æœ€æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®ã‚³ãƒ¼ãƒ‰ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚<br>ï¼ˆã‚¹ã‚­ãƒ«æ§‹æˆã®å¤‰æ›´ç­‰ã®ç†ç”±ã«ã‚ˆã‚Šãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒå¤‰ã‚ã‚Šã¾ã™ã€‚ï¼‰");
 //		for(i=0; i<50; i++) tdata[i] = 0;
 //		return tdata;
 //	}
@@ -539,7 +539,7 @@ function decode(code,ver){
 		j = j+3;
 	}
 
-	// ƒR[ƒh•ÏŠ· Update2014.03.18‘Î‰
+	// ã‚³ãƒ¼ãƒ‰å¤‰æ› Update2014.03.18å¯¾å¿œ
 
 	if(job=="rkn" && code_ver =="10"){
 		tdata[41]=tdata[38]; tdata[40]=tdata[37]; tdata[39]=tdata[36]; tdata[38]=tdata[37]=tdata[36]=0;
@@ -580,7 +580,7 @@ function loadType(mode){
 		if(slotdata[num].split(":")[0] != ""){
 			code = slotdata[num].split(":")[2];
 			name = slotdata[num].split(":")[3];
-			setAlertLayer("ƒNƒbƒL[‚©‚çƒ[ƒh‚µ‚Ü‚·B<br><br>slot"+num+" / codever "+code.charAt(0),1);
+			setAlertLayer("ã‚¯ãƒƒã‚­ãƒ¼ã‹ã‚‰ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ã€‚<br><br>slot"+num+" / codever "+code.charAt(0),1);
 			document.Msg.chrName.value = unescape(name);
 			setNameForm();
 			tmp = "0|";
@@ -601,13 +601,13 @@ function loadType(mode){
 		if(slotdata[num].split(":")[0] != ""){
 			code = slotdata[num].split(":")[2];
 			name = slotdata[num].split(":")[3];
-			setAlertLayer("ƒNƒbƒL[‚©‚çƒ[ƒh‚µ‚Ü‚·B<br><br>slot "+num+" / codever "+code.charAt(0),1);
+			setAlertLayer("ã‚¯ãƒƒã‚­ãƒ¼ã‹ã‚‰ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ã€‚<br><br>slot "+num+" / codever "+code.charAt(0),1);
 			document.Msg.chrName.value = unescape(name);
 			setNameForm();
 		}
 	}if(mode == "url"){
 		code = location.search.substring(1);
-		setAlertLayer("URL‚©‚çƒ[ƒh‚µ‚Ü‚·B<br><br>codever "+code.charAt(0),1);
+		setAlertLayer("URLã‹ã‚‰ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ã€‚<br><br>codever "+code.charAt(0),1);
 		document.Msg.scode.value = code;
 	}if(mode == "tmp"){
 		code = tmpcode;
@@ -616,14 +616,14 @@ function loadType(mode){
 }
 
 function Reset(){
-	setAlertLayer("<br><br><br><br>ƒXƒLƒ‹ƒ|ƒCƒ“ƒg‚ğ‘S‚ÄƒŠƒZƒbƒg‚µ‚Ü‚·B<br><br><br><br>"
-		+ "<form><input type='button' value='@OK@' onclick='Clear();'>@@"
+	setAlertLayer("<br><br><br><br>ã‚¹ã‚­ãƒ«ãƒã‚¤ãƒ³ãƒˆã‚’å…¨ã¦ãƒªã‚»ãƒƒãƒˆã—ã¾ã™ã€‚<br><br><br><br>"
+		+ "<form><input type='button' value='ã€€OKã€€' onclick='Clear();'>ã€€ã€€"
 		+ "<input type='button' value='CANSEL' onclick='offOptionLayer();'></form>",0);
 }
 function DeleteSlot(){
 	num = document.Msg.Data.options[document.Msg.Data.selectedIndex].value;
-	setAlertLayer("<br><br><br><br>ƒZ[ƒuƒXƒƒbƒg (slot "+num+") ‚É‚ ‚éƒf[ƒ^‚ğíœ‚µ‚Ü‚·B<br><br><br><br>"
-		+ "<form><input type='button' value='@OK@' onclick='DeleteSlot2();'>@@"
+	setAlertLayer("<br><br><br><br>ã‚»ãƒ¼ãƒ–ã‚¹ãƒ­ãƒƒãƒˆ (slot "+num+") ã«ã‚ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã—ã¾ã™ã€‚<br><br><br><br>"
+		+ "<form><input type='button' value='ã€€OKã€€' onclick='DeleteSlot2();'>ã€€ã€€"
 		+ "<input type='button' value='CANSEL' onclick='offOptionLayer();'></form>",0);
 }
 
@@ -637,7 +637,7 @@ function DeleteSlot2(){
 	document.cookie = "ro4=" + tmp + "; expires=Fri, 31-Dec-2030 23:59:59; ";
 	document.Msg.Data.options[document.Msg.Data.selectedIndex].text = "slot " + num + " : no save";
 	document.Msg.Data.options[document.Msg.Data.selectedIndex].style.backgroundColor = "#ffffff";
-	setAlertLayer("ƒZ[ƒuƒf[ƒ^‚ğíœ‚µ‚Ü‚µ‚½B(slot "+num+")",1);
+	setAlertLayer("ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã—ã¾ã—ãŸã€‚(slot "+num+")",1);
 }
 
 function msovr(posX,posY,skillid,flg){
