@@ -474,7 +474,7 @@ function Save3(code){
 }
 
 function codeCopy(){
-	tmp2 = "http://uniuni.dfz.jp/skill4/"+job+".html?"+Save("scode");
+	tmp2 = "https://hamatan.github.io/ro_docs/"+job+".html?"+Save("scode");
 	setAlertLayer("<br><br><br><br>以下のURLを出力しました。<br>（選択して右クリックし、メニューからコピーしてください）<br><br><br>"
 		+ "<form><input type='text' value='"
 		+ tmp2 + "' onfocus='this.select();' onclick='this.select();' size=60 readonly></form>",0);
