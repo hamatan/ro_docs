@@ -1,6 +1,79 @@
 <html>
 <body>
- 
+<h2>わむてる改造方法</h2>
+
+1.<a href="http://uniuni.dfz.jp/">わむてる公式</a>の下の方にあるゴミ箱から skill4.10.00.zip をダウンロードして展開。<br>
+
+2.ブラウザの倍率をCTRL+かCTRL-で100％にしてスクショをとってペイントかなんかで開いたら、<br>
+　キャンバスの左上に画像を合わせ大体の配置を決める。無いスキルは適当にコピペして作る。<br>
+3.スキルボックスの座標(この画像のサイトなら 20,445 らへん)をメモっとく。<br>
+<img src="./guide_img/ro_uniuni_mod1.jpg" width="842" height="562"><br>
 <br>
+4.改造したい職のhtmlファイルをメモ帳で開いて下の方～にある対象のスキルを検索して座標を上書きする。<br>
+　一番上のスキル(上の画像ならストーンカース)の座標をtopだけ変えて書いてくと楽。<br>
+<img src="./guide_img/ro_uniuni_mod2.png"><br>
+<br>
+5.追加スキルを書き足す。下のようなブロックをコピペしてIDとスキル名、座標を適当に変更する。<br>
+　IDはオレオレIDでおｋだが重複不可、追加したスキルIDは控えておくこと(下の画像なら LLND)<br>
+　アイコンは似たようなスキルからコピペ。<br>
+<img src="./guide_img/ro_uniuni_mod3.png"><br>
+<br>
+6.追加したスキルIDを実装していく。<br>
+　htmlファイルの上の部分から追加した =スキルID_P を =0; の間に書き足す。<br>
+　ついでに use4 と JMAX_P = 45;　を追加し、verを40かそのへんにする。<br>
+　その下に続く スキルID_M も最大スキルレベルなので追加していく。<br>
+<img src="./guide_img/ro_uniuni_mod4.png"><br>
+<br><br>
+7.追加したIDが前提のスキルを追加していく。スキルID_M の下に スキルID_F があるので追加する。<br>
+　例えばライトニングランドLv1がサモンプロセラの前提なので追加する。<br>
+　三次が前提の場合、三次職スキルの方も忘れずに書き足しておく。<br>
+<img src="./guide_img/ro_uniuni_mod5.png"><br>
+<br>
+&lt;書式&gt;<br>
+
+&nbsp;&nbsp;&nbsp;function スキルID_F(){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Point( スキルID_P, 最大スキルレベル, "スキルID"); <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if( スキルID_P &lt; 1 ){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// スキルLvが前提以下の場合は対象スキルIDを無効にする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Disable("無効スキルID"); if( 無効スキルID_P &gt; 0){ 無効スキルID_P=0; 無効スキルID_F(); }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if( スキルID_P &gt;= 1 && 別の前提スキルID_P &gt;= 1 ){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// スキルLvが前提以上の場合は対象スキルIDを有効にする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visible("有効スキルID");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if( 前提スキルID_P &lt; 2 && スキルID_P &gt; 0 ){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// このスキルIDが前提を満たして居ない場合、前提分のポイントを追加する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前提スキルID_P = 2; Visible("スキルID"); 前提スキルID_F;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+<br>
+8.スキルレベルの範囲を追加する<br>
+　if(parts == "スキルID") のブロックが大量にあるので、追加してスキルIDの最大レベルを指定する。<br>
+<img src="./guide_img/ro_uniuni_mod6.png"><br>
+<br>
+9.ポイント表示やらクリアやら追加、use4 を追加して四次職スキルはそこに入れる。コピペ地獄。<br>
+<img src="./guide_img/ro_uniuni_mod7.png"><br>
+<br><br>
+10.セーブ<br>
+　0から滝のように連番でならんでるので、追加したスキルID_P を連番になるように追加 <br>
+　赤枠の部分は全職共通の転職Lvなので、四次職用の tdata[xx] = ( JMAX_P - 40 ) / 5; を加えて最後に移す。<br>
+　増えた分の番号、89番なら0番目もあるので+1して90個をブロックの先頭にある var tdata = new Array(個数); に更新する。<br>
+<img src="./guide_img/ro_uniuni_mod8.png"><br>
+<br>
+11.ロード<br>
+　セーブで追加したのと同じ番号にスキル_Pを割り当てる事、四次職用に JMAX_P = (tdata[xx] * 5) + 40; を加える。<br>
+　それに加えて document.Msg.maxjLv4.value = JMAX_P; を追加しておく。下の スキルID_F ブロックも追加。<br>
+<img src="./guide_img/ro_uniuni_mod9.png"><br>
+<br>
+12.四次職 最大JobLv<br>
+　Job40から増えてくのが予想されるので、転職レベルの下に5きざみで70まで追加しておく。<br>
+　名前欄の場所を使うので名前欄の type="text" を type="hidden" にしておく。<br>
+<img src="./guide_img/ro_uniuni_mod10.png"><br>
+<br>
+おわり<br>
+　やつおらんやろ…　特に 7. 10. 11. 辺り人に説明するの無理ゲー過ぎる…<br>
+　ちなバグるならそこ。<br>
+<br><br>
 </body>
 </html>
