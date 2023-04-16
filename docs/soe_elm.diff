@@ -1,0 +1,1080 @@
+3d2
+< 
+5,6c4,5
+< <link id="csslink" rel=stylesheet href="dat/skill.css" type="text/css">
+< <title>Magician - Sage - Professor - Sorcerer with Elemental</title>
+---
+> <link id="csslink" rel=stylesheet href="./dat/skill.css" type="text/css">
+> <title>ElementalMaster &lt;Sorcerer - Professor - Sage - Magician&gt; </title>
+10c9
+< 	background-image: url("img/back_sox.png");
+---
+> 	background-image: url("img/back_elm.png");
+14,15c13,14
+< <script language="JavaScript" src="dat/skill4.js"></script>
+< <script language="JavaScript" src="dat/skilllist2.js"></script>
+---
+> <script language="JavaScript" src="./dat/skill4.js"></script>
+> <script language="JavaScript" src="./dat/skilllist2.js"></script>
+37a37,42
+> 	= BMAS_P = TDRV_P = LLND_P = DSTR_P
+> 	= CNGF_P = VSWP_P = SENC_P = ACTB_P
+> 	= INCA_P
+> 	= EMAS_P = ELVE_P
+> 	= SMTE_P = SMPR_P = SMTV_P = SMDR_P
+> 	= SMTP_P = EBST_P
+40c45
+< var use1 = use2 = use3 = 0;
+---
+> var use1 = use2 = use3 = use4 = 0;
+43c48,49
+< var ver = "20";
+---
+> var JMAX_P = 45;
+> var ver = "41";
+91c97
+< var SFST_M = 5;
+---
+> var SFST_M = 10;
+100c106
+< var VASP_M = 5;
+---
+> var VASP_M = 10;
+119a126,145
+> var BMAS_M = 10;
+> var TDRV_M = 5;
+> var LLND_M = 5;
+> var DSTR_M = 5;
+> var CNGF_M = 5;
+> var VSWP_M = 5;
+> 
+> var EMAS_M = 10;
+> var ELVE_M = 5;
+> var SMTE_M = 1;
+> var SMPR_M = 1;
+> var SMTV_M = 1;
+> var SMDR_M = 1;
+> var SMTP_M = 1;
+> var EBST_M = 10;
+> 
+> var SENC_M = 5;
+> var ACTB_M = 5;
+> var INCA_M = 5;
+> 
+665c691
+< 	Point(SFST_P,5, "SFST");
+---
+> 	Point(SFST_P,10, "SFST");
+747c773
+< 	Point(VASP_P,5, "VASP");
+---
+> 	Point(VASP_P,10, "VASP");
+765c791
+< // 精霊
+---
+> // 2023-03-26 精霊追記 (四次職スキルの前提条件を追加)
+769,771c795,802
+< 		Disable("FRIS"); if(FRIS_P>0){ FRIS_P=0; FRIS_F();}
+< 	}if(SMAG_P>=3){
+< 		Visible("FRIS");
+---
+> //		Disable("FRIS"); if(FRIS_P>0){ FRIS_P=0; FRIS_F();}
+> 		Disable("SMDR"); if(SMDR_P>0){ SMDR_P=0; SMDR_F();}
+> 		Disable("SMTP"); if(SMTP_P>0){ SMTP_P=0; SMTP_F();}
+> 	}if(SMAG_P >=3 && EMAS_P >=1 && CNGF_P >=1){
+> //		Visible("FRIS");
+> 		Visible("SMDR");
+> 	}if(SMAG_P>=3 && SMTR_P >=3 && SMVN_P >= 3 && SMAQ_P >=3 && EMAS_P >=1 && VSWP_P >=1){
+> 		Visible("SMTP");
+781,783c812,819
+< 		Disable("WTIS"); if(WTIS_P>0){ WTIS_P=0; WTIS_F();}
+< 	}if(SMAQ_P>=3){
+< 		Visible("WTIS");
+---
+> //		Disable("WTIS"); if(WTIS_P>0){ WTIS_P=0; WTIS_F();}
+> 		Disable("SMTV"); if(SMTV_P>0){ SMTV_P=0; SMTV_F();}
+> 		Disable("SMTP"); if(SMTP_P>0){ SMTP_P=0; SMTP_F();}
+> 	}if(SMAQ_P>=3 && EMAS_P >=1 && DSTR_P >=1){
+> //		Visible("WTIS");
+> 		Visible("SMTV");
+> 	}if(SMAQ_P>=3 && SMTR_P >=3 && SMVN_P >= 3 && SMAG_P >=3 && EMAS_P >=1 && VSWP_P >=1){
+> 		Visible("SMTP");
+793,795c829,836
+< 		Disable("WDIS"); if(WDIS_P>0){ WDIS_P=0; WDIS_F();}
+< 	}if(SMVN_P>=3){
+< 		Visible("WDIS");
+---
+> //		Disable("WDIS"); if(WDIS_P>0){ WDIS_P=0; WDIS_F();}
+> 		Disable("SMPR"); if(SMPR_P>0){ SMPR_P=0; SMPR_F();}
+> 		Disable("SMTP"); if(SMTP_P>0){ SMTP_P=0; SMTP_F();}
+> 	}if(SMVN_P>=3 && EMAS_P >=1 && LLND_P >=1){
+> //		Visible("WDIS");
+> 		Visible("SMPR");
+> 	}if(SMVN_P>=3 && SMTR_P >=3 && SMAQ_P >= 3 && SMAG_P >=3 && EMAS_P >=1 && VSWP_P >=1){
+> 		Visible("SMTP");
+805,807c846,853
+< 		Disable("ETIS"); if(ETIS_P>0){ ETIS_P=0; ETIS_F();}
+< 	}if(SMTR_P>=3){
+< 		Visible("ETIS");
+---
+> //		Disable("ETIS"); if(ETIS_P>0){ ETIS_P=0; ETIS_F();}
+> 		Disable("SMTE"); if(SMTE_P>0){ SMTE_P=0; SMTE_F();}
+> 		Disable("SMTP"); if(SMTP_P>0){ SMTP_P=0; SMTP_F();}
+> 	}if(SMTR_P>=3 && EMAS_P >=1 && TDRV_P >=1){
+> //		Visible("ETIS");
+> 		Visible("SMTE");
+> 	}if(SMTR_P>=3 && SMVN_P >=3 && SMAQ_P >= 3 && SMAG_P >=3 && EMAS_P >=1 && VSWP_P >=1){
+> 		Visible("SMTP");
+867a914
+> 		Disable("EMAS"); if(EMAS_P>0){ EMAS_P=0; EMAS_F();}
+869a917
+> 		Visible("EMAS");
+915a964,1202
+> // 2023-03-26 エレメンタルマスター
+> function BMAS_F(){
+> 	Point(BMAS_P,10,"BMAS");
+> 	if(BMAS_P<2){
+> 		Disable("TDRV"); if(TDRV_P>0){ TDRV_P=0; TDRV_F();}
+> 		Disable("LLND"); if(LLND_P>0){ LLND_P=0; LLND_F();}
+> 		Disable("DSTR"); if(DSTR_P>0){ DSTR_P=0; DSTR_F();}
+> 		Disable("CNGF"); if(CNGF_P>0){ CNGF_P=0; CNGF_F();}
+> 		Disable("VSWP"); if(VSWP_P>0){ VSWP_P=0; VSWP_F();}
+> 	}if(BMAS_P>=2){
+> 		Visible("TDRV");
+> 		Visible("LLND");
+> 		Visible("DSTR");
+> 		Visible("CNGF");
+> 		Visible("VSWP");
+> 	}if(BMAS_P<5){
+> 		Disable("SENC"); if(SENC_P>0){ SENC_P=0; SENC_F();}
+> 	}if(BMAS_P>=5){
+> 		Visible("SENC");
+> 	}
+> }
+> 
+> function TDRV_F(){
+> 	Point(TDRV_P,5, "TDRV");
+> 	if(TDRV_P<1){
+> 		Disable("SMTE"); if(SMTE_P>0){ SMTE_P=0; SMTE_F();}
+> 	}if(TDRV_P >=1 && EMAS_P >=1 && SMTR_P >= 3){
+> 		Visible("SMTE");
+> 	}if(BMAS_P<2 && TDRV_P>0){
+> 		BMAS_P=2; Visible("TDRV"); BMAS_F();
+> 	}
+> }
+> 
+> function LLND_F(){
+> 	Point(LLND_P,5, "LLND");
+> 	if(LLND_P<1){
+> 		Disable("SMPR"); if(SMPR_P>0){ SMPR_P=0; SMPR_F();}
+> 	}if(LLND_P>=1 && EMAS_P >=1 && SMVN_P >= 3){
+> 		Visible("SMPR");
+> 	}if(BMAS_P<2 && LLND_P>0){
+> 		BMAS_P=2; Visible("LLND"); BMAS_F();
+> 	}
+> }
+> 
+> function DSTR_F(){
+> 	Point(DSTR_P,5, "DSTR");
+> 	if(DSTR_P<1){
+> 		Disable("SMTV"); if(SMTV_P>0){ SMTV_P=0; SMTV_F();}
+> 	}if(DSTR_P>=1 && EMAS_P >=1 && SMAQ_P >= 3){
+> 		Visible("SMTV");
+> 	}if(BMAS_P<2 && DSTR_P>0){
+> 		BMAS_P=2; Visible("DSTR"); BMAS_F();
+> 	}
+> }
+> 
+> function CNGF_F(){
+> 	Point(CNGF_P,5, "CNGF");
+> 	if(CNGF_P<1){
+> 		Disable("SMDR"); if(SMDR_P>0){ SMDR_P=0; SMDR_F();}
+> 	}if(CNGF_P>=1 && EMAS_P >=1 && SMAG_P >= 3){
+> 		Visible("SMDR");
+> 	}if(BMAS_P<2 && CNGF_P>0){
+> 		BMAS_P=2; Visible("CNGF"); BMAS_F();
+> 	}
+> }
+> 
+> function VSWP_F(){
+> 	Point(VSWP_P,5, "VSWP");
+> 	if(VSWP_P<1){
+> 		Disable("SMTP"); if(SMTP_P>0){ SMTP_P=0; SMTP_F();}
+> 	}if(VSWP_P>=1 && EMAS_P >=1 && SMTR_P >= 3 && SMVN_P >= 3 && SMAQ_P >= 3 && SMAG_P >= 3){
+> 		Visible("SMTP");
+> 	}if(BMAS_P<2 && VSWP_P>0){
+> 		BMAS_P=2; Visible("VSWP"); BMAS_F();
+> 	}
+> }
+> 
+> function SENC_F(){
+> 	Point(SENC_P,5, "SENC");
+> 	if(SENC_P<3){
+> 		Disable("ACTB"); if(ACTB_P>0){ ACTB_P=0; ACTB_F();}
+> 	}if(SENC_P>=4){
+> 		Visible("ACTB");
+> 	}if(BMAS_P<5 && SENC_P>0){
+> 		BMAS_P=5; Visible("SENC"); BMAS_F();
+> 	}
+> }
+> 
+> function ACTB_F(){
+> 	Point(ACTB_P,5, "ACTB");
+> 	if(ACTB_P<4){
+> 		Disable("INCA"); if(INCA_P>0){ INCA_P=0; INCA_F();}
+> 	}if(ACTB_P>=5){
+> 		Visible("INCA");
+> 	}if(SENC_P<3 && ACTB_P>0){
+> 		SENC_P=3; Visible("ACTB"); SENC_F();
+> 	}
+> }
+> 
+> function INCA_F(){
+> 	Point(INCA_P,5, "INCA");
+> 	if(ACTB_P<5 && INCA_P>0){
+> 		ACTB_P=5; Visible("INCA"); ACTB_F();
+> 	}
+> }
+> 
+> function EMAS_F(){
+> 	Point(EMAS_P,10,"EMAS");
+> 	if(EMAS_P<1){
+> 		Disable("SMTE"); if(SMTE_P>0){ SMTE_P=0; SMTE_F();}
+> 		Disable("SMPR"); if(SMPR_P>0){ SMPR_P=0; SMPR_F();}
+> 		Disable("SMTV"); if(SMTV_P>0){ SMTV_P=0; SMTV_F();}
+> 		Disable("SMDR"); if(SMDR_P>0){ SMDR_P=0; SMDR_F();}
+> 		Disable("SMTP"); if(SMTP_P>0){ SMTP_P=0; SMTP_F();}
+> 	}
+> 	if(EMAS_P>=1 && SMTR_P >=3 && TDRV_P >= 1){  Visible("SMTE"); }
+> 	if(EMAS_P>=1 && SMVN_P >=3 && LLND_P >= 1){  Visible("SMPR"); }
+> 	if(EMAS_P>=1 && SMAQ_P >=3 && DSTR_P >= 1){  Visible("SMTV"); }
+> 	if(EMAS_P>=1 && SMAG_P >=3 && CNGF_P >= 1){  Visible("SMDR"); }
+> 	if(EMAS_P>=1 && SMTR_P >=3 && VSWP_P >= 1 && SMVN_P >=3 && SMAQ_P >=3 && SMAG_P >=3){  Visible("SMTP"); }
+> 	if(EMAS_P<3){
+> 		Disable("ELVE"); if(ELVE_P>0){ ELVE_P=0; ELVE_F();}
+> 	}if(EMAS_P>=3){
+> 		Visible("ELVE");
+> 	}if(EMAS_P<5){
+> 		Disable("EBST"); if(EBST_P>0){ EBST_P=0; EBST_F();}
+> 	}if(EMAS_P>=5 && SMTE_P >=1 && SMPR_P >=1 && SMTV_P >=1 && SMDR_P >=1 && SMTP_P >=1){
+> 		Visible("EBST");
+> 	}
+> 	if(ELSY_P<1 && EMAS_P>0){
+> 		ELSY_P=1; Visible("EMAS"); ELSY_F();
+> 	}
+> }
+> 
+> function ELVE_F(){
+> 	Point(ELVE_P,5, "ELVE");
+> 	if(EMAS_P<3 && ELVE_P>0){
+> 		EMAS_P=3; Visible("ELVE"); EMAS_F();
+> 	}
+> }
+> 
+> function SMTE_F(){
+> 	Point(SMTE_P,1, "SMTE");
+> 	if(SMTE_P<1){
+> 		Disable("EBST"); if(EBST_P>0){ EBST_P=0; EBST_F();}
+> 	}if(EMAS_P >=5 && SMTE_P >=1 && SMPR_P >=1 && SMTV_P >=1 && SMDR_P >=1 && SMTP_P >=1){
+> 		Visible("EBST");
+> 	}if(EMAS_P <1 && SMTE_P>0){
+> 		EMAS_P=1; Visible("SMTE"); EMAS_F();
+> 	}if(TDRV_P<1 && SMTE_P>0){
+> 		TDRV_P=1; Visible("SMTE"); TDRV_F();
+> 	}if(SMTR_P<3 && SMTE_P>0){
+> 		SMTR_P=3; Visible("SMTE"); SMTR_F();
+> 	}
+> }
+> 
+> function SMPR_F(){
+> 	Point(SMPR_P,1, "SMPR");
+> 	if(SMPR_P<1){
+> 		Disable("EBST"); if(EBST_P>0){ EBST_P=0; EBST_F();}
+> 	}if(EMAS_P >=5 && SMPR_P >=1 && SMTE_P >=1 && SMTV_P >=1 && SMDR_P >=1 && SMTP_P >=1){
+> 		Visible("EBST");
+> 	}if(EMAS_P<1 && SMPR_P>0){
+> 		EMAS_P=1; Visible("SMPR"); EMAS_F();
+> 	}if(LLND_P<1 && SMPR_P>0){
+> 		LLND_P=1; Visible("SMPR"); LLND_F();
+> 	}if(SMVN_P<3 && SMPR_P>0){
+> 		SMVN_P=3; Visible("SMPR"); SMVN_F();
+> 	}
+> }
+> 
+> function SMTV_F(){
+> 	Point(SMTV_P,1, "SMTV");
+> 	if(SMTV_P<1){
+> 		Disable("EBST"); if(EBST_P>0){ EBST_P=0; EBST_F();}
+> 	}if(EMAS_P >=5 && SMTV_P >=1 && SMTE_P >=1 && SMPR_P >=1 && SMDR_P >=1 && SMTP_P >=1){
+> 		Visible("EBST");
+> 	}if(EMAS_P<1 && SMTV_P>0){
+> 		EMAS_P=1; Visible("SMTV"); EMAS_F();
+> 	}if(DSTR_P<1 && SMTV_P>0){
+> 		DSTR_P=1; Visible("SMTV"); DSTR_F();
+> 	}if(SMAQ_P<3 && SMTV_P>0){
+> 		SMAQ_P=3; Visible("SMTV"); SMAQ_F();
+> 	}
+> }
+> 
+> function SMDR_F(){
+> 	Point(SMDR_P,1, "SMDR");
+> 	if(SMDR_P<1){
+> 		Disable("EBST"); if(EBST_P>0){ EBST_P=0; EBST_F();}
+> 	}if(EMAS_P >=5 && SMDR_P >=1 && SMTE_P >=1 && SMPR_P >=1 && SMTV_P >=1 && SMTP_P >=1){
+> 		Visible("EBST");
+> 	}if(EMAS_P<1 && SMDR_P>0){
+> 		EMAS_P=1; Visible("SMDR"); EMAS_F();
+> 	}if(CNGF_P<1 && SMDR_P>0){
+> 		CNGF_P=1; Visible("SMDR"); CNGF_F();
+> 	}if(SMAG_P<3 && SMDR_P>0){
+> 		SMAG_P=3; Visible("SMDR"); SMAG_F();
+> 	}
+> }
+> 
+> function SMTP_F(){
+> 	Point(SMTP_P,1, "SMTP");
+> 	if(SMTP_P<1){
+> 		Disable("EBST"); if(EBST_P>0){ EBST_P=0; EBST_F();}
+> 	}if(EMAS_P >=5 && SMTP_P>=1 && SMTE_P >=1 && SMPR_P >=1 && SMTV_P >=1 && SMDR_P >=1){
+> 		Visible("EBST");
+> 	}if(EMAS_P<1 && SMTP_P>0){
+> 		EMAS_P=1; Visible("SMTP"); EMAS_F();
+> 	}if(VSWP_P<1 && SMTP_P>0){
+> 		VSWP_P=1; Visible("SMTP"); VSWP_F();
+> 	}if(SMTR_P<3 && SMTP_P>0){
+> 		SMTR_P=3; Visible("SMTP"); SMTR_F();
+> 	}if(SMVN_P<3 && SMTP_P>0){
+> 		SMVN_P=3; Visible("SMTP"); SMVN_F();
+> 	}if(SMAQ_P<3 && SMTP_P>0){
+> 		SMAQ_P=3; Visible("SMTP"); SMAQ_F();
+> 	}if(SMAG_P<3 && SMTP_P>0){
+> 		SMAG_P=3; Visible("SMTP"); SMAG_F();
+> 	}
+> }
+> 
+> function EBST_F(){
+> 	Point(EBST_P,10, "EBST");
+> 	if(EMAS_P<5 && EBST_P>0){
+> 		EMAS_P=5; Visible("EBST"); EMAS_F();
+> 	}if(SMTE_P<1 && EBST_P>0){
+> 		SMTE_P=1; Visible("EBST"); SMTE_F();
+> 	}if(SMPR_P<1 && EBST_P>0){
+> 		SMPR_P=1; Visible("EBST"); SMPR_F();
+> 	}if(SMTV_P<1 && EBST_P>0){
+> 		SMTV_P=1; Visible("EBST"); SMTV_F();
+> 	}if(SMDR_P<1 && EBST_P>0){
+> 		SMDR_P=1; Visible("EBST"); SMDR_F();
+> 	}if(SMTP_P<1 && EBST_P>0){
+> 		SMTP_P=1; Visible("EBST"); SMTP_F();
+> 	}
+> }
+> 
+961c1248
+< 	if(parts == "SFST") { if(point>=0 && point<=5 ) SFST_P=point; SFST_F(); }
+---
+> 	if(parts == "SFST") { if(point>=0 && point<=10 ) SFST_P=point; SFST_F(); }
+970c1257
+< 	if(parts == "VASP") { if(point>=0 && point<=5 ) VASP_P=point; VASP_F(); }
+---
+> 	if(parts == "VASP") { if(point>=0 && point<=10 ) VASP_P=point; VASP_F(); }
+989a1277,1294
+> 	if(parts == "BMAS") { if(point>=0 && point<=10 ) BMAS_P=point; BMAS_F(); }
+> 	if(parts == "TDRV") { if(point>=0 && point<=5 ) TDRV_P=point; TDRV_F(); }
+> 	if(parts == "LLND") { if(point>=0 && point<=5 ) LLND_P=point; LLND_F(); }
+> 	if(parts == "DSTR") { if(point>=0 && point<=5 ) DSTR_P=point; DSTR_F(); }
+> 	if(parts == "CNGF") { if(point>=0 && point<=5 ) CNGF_P=point; CNGF_F(); }
+> 	if(parts == "VSWP") { if(point>=0 && point<=5 ) VSWP_P=point; VSWP_F(); }
+> 	if(parts == "SENC") { if(point>=0 && point<=5 ) SENC_P=point; SENC_F(); }
+> 	if(parts == "ACTB") { if(point>=0 && point<=5 ) ACTB_P=point; ACTB_F(); }
+> 	if(parts == "INCA") { if(point>=0 && point<=5 ) INCA_P=point; INCA_F(); }
+> 	if(parts == "EMAS") { if(point>=0 && point<=10 ) EMAS_P=point; EMAS_F(); }
+> 	if(parts == "ELVE") { if(point>=0 && point<=5 ) ELVE_P=point; ELVE_F(); }
+> 	if(parts == "SMTE") { if(point>=0 && point<=1 ) SMTE_P=point; SMTE_F(); }
+> 	if(parts == "SMPR") { if(point>=0 && point<=1 ) SMPR_P=point; SMPR_F(); }
+> 	if(parts == "SMTV") { if(point>=0 && point<=1 ) SMTV_P=point; SMTV_F(); }
+> 	if(parts == "SMDR") { if(point>=0 && point<=1 ) SMDR_P=point; SMDR_F(); }
+> 	if(parts == "SMTP") { if(point>=0 && point<=1 ) SMTP_P=point; SMTP_F(); }
+> 	if(parts == "EBST") { if(point>=0 && point<=10 ) EBST_P=point; EBST_F(); }
+> 
+1014c1319,1325
+< 	showMsg(3);
+---
+> 	use4 = BMAS_P + TDRV_P + LLND_P + DSTR_P
+> 		+ CNGF_P + VSWP_P + SENC_P + ACTB_P
+> 		+ INCA_P
+> 		+ EMAS_P + ELVE_P
+> 		+ SMTE_P + SMPR_P + SMTV_P + SMDR_P
+> 		+ SMTP_P + EBST_P;
+> 	showMsg(4);
+1039a1351,1356
+> 	= BMAS_P = TDRV_P = LLND_P = DSTR_P
+> 	= CNGF_P = VSWP_P = SENC_P = ACTB_P
+> 	= INCA_P
+> 	= EMAS_P = ELVE_P
+> 	= SMTE_P = SMPR_P = SMTV_P = SMDR_P
+> 	= SMTP_P = EBST_P
+1041c1358
+< 	use1 = use2 = use3 = 0;
+---
+> 	use1 = use2 = use3 = use4 = 0;
+1061a1379,1384
+> 	BMAS_F(); TDRV_F(); LLND_F(); DSTR_F();
+> 	CNGF_F(); VSWP_F(); SENC_F(); ACTB_F();
+> 	INCA_F();
+> 	EMAS_F(); ELVE_F();
+> 	SMTE_F(); SMPR_F(); SMTV_F(); SMDR_F();
+> 	SMTP_F(); EBST_F();
+1067c1390
+< 	var tdata = new Array(72);
+---
+> 	var tdata = new Array(90);
+1137,1139c1460,1480
+< 	tdata[69] = JCHF_P - 40;
+< 	tdata[70] = Math.floor(JCHT_P/10);
+< 	tdata[71] = JCHT_P%10;
+---
+> 	tdata[69] = BMAS_P;
+> 	tdata[70] = TDRV_P;
+> 	tdata[71] = LLND_P;
+> 	tdata[72] = DSTR_P;
+> 	tdata[73] = CNGF_P;
+> 	tdata[74] = VSWP_P;
+> 	tdata[75] = SENC_P;
+> 	tdata[76] = ACTB_P;
+> 	tdata[77] = INCA_P;
+> 	tdata[78] = EMAS_P;
+> 	tdata[79] = ELVE_P;
+> 	tdata[80] = SMTE_P;
+> 	tdata[81] = SMPR_P;
+> 	tdata[82] = SMTV_P;
+> 	tdata[83] = SMDR_P;
+> 	tdata[84] = SMTP_P;
+> 	tdata[85] = EBST_P;
+> 	tdata[86] = (JMAX_P - 40) / 5;
+> 	tdata[87] = JCHF_P - 40;
+> 	tdata[88] = Math.floor(JCHT_P/10);
+> 	tdata[89] = JCHT_P%10;
+1224,1225c1565,1584
+< 		JCHF_P = tdata[69] + 40;
+< 		JCHT_P = tdata[70]*10 + tdata[71];
+---
+> 		BMAS_P = tdata[69];
+> 		TDRV_P = tdata[70];
+> 		LLND_P = tdata[71];
+> 		DSTR_P = tdata[72];
+> 		CNGF_P = tdata[73];
+> 		VSWP_P = tdata[74];
+> 		SENC_P = tdata[75];
+> 		ACTB_P = tdata[76];
+> 		INCA_P = tdata[77];
+> 		EMAS_P = tdata[78];
+> 		ELVE_P = tdata[79];
+> 		SMTE_P = tdata[80];
+> 		SMPR_P = tdata[81];
+> 		SMTV_P = tdata[82];
+> 		SMDR_P = tdata[83];
+> 		SMTP_P = tdata[84];
+> 		EBST_P = tdata[85];
+> 		JMAX_P = (tdata[86] * 5) + 40;
+> 		JCHF_P = tdata[87] + 40;
+> 		JCHT_P = tdata[88]*10 + tdata[89];
+1229a1589
+> 	document.Msg.maxjLv4.value = JMAX_P;
+1251c1611,1616
+< 
+---
+> 	BMAS_F(); TDRV_F(); LLND_F(); DSTR_F();
+> 	CNGF_F(); VSWP_F(); SENC_F(); ACTB_F();
+> 	INCA_F();
+> 	EMAS_F(); ELVE_F();
+> 	SMTE_F(); SMPR_F(); SMTV_F(); SMDR_F();
+> 	SMTP_F(); EBST_F();
+1260c1625
+< <div id="msgid" style="position:absolute; top:8px; left:10px; width:320px; padding:3px;">Loading...</div>
+---
+> <div id="msgid" style="position:absolute; top:8px; left:10px; width:400px; padding:3px;">Loading...</div>
+1262c1627
+< <div style="position:absolute; top:8px; left:340px; width:850px;">
+---
+> <div style="position:absolute; top:8px; left:430px; width:850px;">
+1267c1632
+< <select name="jobchg1" onchange="JCHF_P=this.value; showMsg(3)">
+---
+> <select name="jobchg1" onchange="JCHF_P=this.value; showMsg(4)">
+1281c1646
+< <select name="jobchg2" onchange="JCHT_P=this.value; showMsg(3)">
+---
+> <select name="jobchg2" onchange="JCHT_P=this.value; showMsg(4)">
+1305c1670,1682
+< 名前 <input type="text" name="chrName" id="chrNameId" maxlength=24 value="" title="セーブスロットに名前がつきます。" onblur="setNameForm();">
+---
+> 四次職レベル
+> <select name="maxjLv4" onchange="JMAX_P=this.value; showMsg(4)">
+> <option value="40">Job40
+> <option value="45" selected>Job45
+> <option value="50">Job50
+> <option value="55">Job55
+> <option value="60">Job60
+> <option value="65">Job65
+> <option value="70">Job70
+> </select>
+> 
+> 　
+> <input type="hidden" name="chrName" id="chrNameId" maxlength=24 value="" title="セーブスロットに名前がつきます。" onblur="setNameForm();">
+1312c1689
+< <a class="con" href="http://uniuni.dfz.jp/skill4/"	title="トップメニューに飛びます。">TopMenu</a>
+---
+> <a class="con" href="http://uniuni.dfz.jp/skill4/"	title="オリジナルサイトに飛びます。">Original</a>
+1374c1751
+< 	style="position:absolute; top:373px; left:60px;"
+---
+> 	style="position:absolute; top:373px; left:45px;"
+1408c1785
+< 	style="position:absolute; top:299px; left:60px;"
+---
+> 	style="position:absolute; top:299px; left:45px;"
+1442c1819
+< 	style="position:absolute; top:410px; left:100px;"
+---
+> 	style="position:absolute; top:410px; left:70px;"
+1493c1870
+< 	style="position:absolute; top:580px; left:100px;"
+---
+> 	style="position:absolute; top:580px; left:70px;"
+1527c1904
+< 	style="position:absolute; top:540px; left:60px;"
+---
+> 	style="position:absolute; top:540px; left:45px;"
+1561c1938
+< 	style="position:absolute; top:225px; left:60px;"
+---
+> 	style="position:absolute; top:225px; left:45px;"
+1582c1959
+< 	style="position:absolute; top:40px; left:280px;"
+---
+> 	style="position:absolute; top:40px; left:230px;"
+1599c1976
+< 	style="position:absolute; top:599px; left:320px;"
+---
+> 	style="position:absolute; top:599px; left:255px;"
+1616c1993
+< 	style="position:absolute; top:635px; left:320px;"
+---
+> 	style="position:absolute; top:635px; left:255px;"
+1633c2010
+< 	style="position:absolute; top:672px; left:360px;"
+---
+> 	style="position:absolute; top:672px; left:280px;"
+1650c2027
+< 	style="position:absolute; top:550px; left:360px;"
+---
+> 	style="position:absolute; top:550px; left:280px;"
+1667c2044
+< 	style="position:absolute; top:513px; left:400px;"
+---
+> 	style="position:absolute; top:513px; left:305px;"
+1684c2061
+< 	style="position:absolute; top:336px; left:320px;"
+---
+> 	style="position:absolute; top:336px; left:255px;"
+1701c2078
+< 	style="position:absolute; top:262px; left:320px;"
+---
+> 	style="position:absolute; top:262px; left:255px;"
+1718c2095
+< 	style="position:absolute; top:188px; left:320px;"
+---
+> 	style="position:absolute; top:188px; left:255px;"
+1735c2112
+< 	style="position:absolute; top:77px; left:320px;"
+---
+> 	style="position:absolute; top:77px; left:255px;"
+1752c2129
+< 	style="position:absolute; top:760px; left:320px;"
+---
+> 	style="position:absolute; top:760px; left:255px;"
+1769c2146
+< 	style="position:absolute; top:373px; left:360px;"
+---
+> 	style="position:absolute; top:373px; left:280px;"
+1786c2163
+< 	style="position:absolute; top:299px; left:360px;"
+---
+> 	style="position:absolute; top:299px; left:280px;"
+1803c2180
+< 	style="position:absolute; top:225px; left:360px;"
+---
+> 	style="position:absolute; top:225px; left:280px;"
+1820c2197
+< 	style="position:absolute; top:425px; left:400px;"
+---
+> 	style="position:absolute; top:447px; left:450px;"
+1837c2214
+< 	style="position:absolute; top:709px; left:400px;"
+---
+> 	style="position:absolute; top:709px; left:305px;"
+1854c2231
+< 	style="position:absolute; top:475px; left:443px;"
+---
+> 	style="position:absolute; top:484px; left:485px;"
+1871c2248
+< 	style="position:absolute; top:114px; left:360px;"
+---
+> 	style="position:absolute; top:114px; left:280px;"
+1888c2265
+< 	style="position:absolute; top:151px; left:400px;"
+---
+> 	style="position:absolute; top:151px; left:305px;"
+1905c2282
+< 	style="position:absolute; top:40px; left:485px;"
+---
+> 	style="position:absolute; top:805px; left:255px;"
+1926c2303
+< 	style="position:absolute; top:636px; left:710px;"
+---
+> 	style="position:absolute; top:636px; left:505px;"
+1943c2320
+< 	style="position:absolute; top:673px; left:710px;"
+---
+> 	style="position:absolute; top:673px; left:505px;"
+1960c2337
+< 	style="position:absolute; top:599px; left:710px;"
+---
+> 	style="position:absolute; top:599px; left:505px;"
+1977c2354
+< 	style="position:absolute; top:725px; left:710px;"
+---
+> 	style="position:absolute; top:725px; left:505px;"
+1994c2371
+< 	style="position:absolute; top:544px; left:710px;"
+---
+> 	style="position:absolute; top:544px; left:505px;"
+2011c2388
+< 	style="position:absolute; top:425px; left:710px;"
+---
+> 	style="position:absolute; top:410px; left:450px;"
+2028c2405
+< 	style="position:absolute; top:760px; left:710px;"
+---
+> 	style="position:absolute; top:760px; left:505px;"
+2045c2422
+< 	style="position:absolute; top:478px; left:710px;"
+---
+> 	style="position:absolute; top:475px; left:305px;"
+2066c2443
+< 	style="position:absolute; top:373px; left:775px;"
+---
+> 	style="position:absolute; top:373px; left:530px;"
+2083c2460
+< 	style="position:absolute; top:262px; left:775px;"
+---
+> 	style="position:absolute; top:262px; left:530px;"
+2100c2477
+< 	style="position:absolute; top:624px; left:970px;"
+---
+> 	style="position:absolute; top:624px; left:715px;"
+2117c2494
+< 	style="position:absolute; top:572px; left:970px;"
+---
+> 	style="position:absolute; top:572px; left:715px;"
+2134c2511
+< 	style="position:absolute; top:702px; left:970px;"
+---
+> 	style="position:absolute; top:702px; left:715px;"
+2151c2528
+< 	style="position:absolute; top:151px; left:775px;"
+---
+> 	style="position:absolute; top:151px; left:530px;"
+2168c2545
+< 	style="position:absolute; top:188px; left:810px;"
+---
+> 	style="position:absolute; top:188px; left:555px;"
+2185c2562
+< 	style="position:absolute; top:77px; left:775px;"
+---
+> 	style="position:absolute; top:77px; left:530px;"
+2202c2579
+< 	style="position:absolute; top:114px; left:775px;"
+---
+> 	style="position:absolute; top:114px; left:530px;"
+2219c2596
+< 	style="position:absolute; top:299px; left:775px;"
+---
+> 	style="position:absolute; top:299px; left:530px;"
+2236c2613
+< 	style="position:absolute; top:336px; left:775px;"
+---
+> 	style="position:absolute; top:336px; left:530px;"
+2253c2630
+< 	style="position:absolute; top:225px; left:775px;"
+---
+> 	style="position:absolute; top:225px; left:530px;"
+2270c2647
+< 	style="position:absolute; top:527px; left:970px;"
+---
+> 	style="position:absolute; top:527px; left:715px;"
+2291c2668
+< 	style="position:absolute; top:447px; left:1005px;"
+---
+> 	style="position:absolute; top:447px; left:740px;"
+2309c2686
+< 	style="position:absolute; top:373px; left:1005px;"
+---
+> 	style="position:absolute; top:373px; left:740px;"
+2327c2704
+< 	style="position:absolute; top:299px; left:1005px;"
+---
+> 	style="position:absolute; top:299px; left:740px;"
+2345c2722
+< 	style="position:absolute; top:225px; left:1005px;"
+---
+> 	style="position:absolute; top:225px; left:740px;"
+2363c2740
+< 	style="position:absolute; top:40px; left:970px;"
+---
+> 	style="position:absolute; top:40px; left:715px;"
+2381c2758
+< 	style="position:absolute; top:77px; left:1005px;"
+---
+> 	style="position:absolute; top:151px; left:740px;"
+2399c2776
+< 	style="position:absolute; top:40px; left:775px;"
+---
+> 	style="position:absolute; top:40px; left:530px;"
+2417c2794
+< 	style="position:absolute; top:114px; left:1005px;"
+---
+> 	style="position:absolute; top:77px; left:740px;"
+2435c2812
+< 	style="position:absolute; top:151px; left:1040px;"
+---
+> 	style="position:absolute; top:114px; left:765px;"
+2453c2830
+< 	style="position:absolute; top:484px; left:1040px;"
+---
+> 	style="position:absolute; top:484px; left:765px; visibility:hidden;"
+2471c2848
+< 	style="position:absolute; top:410px; left:1040px;"
+---
+> 	style="position:absolute; top:410px; left:765px; visibility:hidden;"
+2489c2866
+< 	style="position:absolute; top:336px; left:1040px;"
+---
+> 	style="position:absolute; top:336px; left:765px; visibility:hidden;"
+2507c2884
+< 	style="position:absolute; top:262px; left:1040px;"
+---
+> 	style="position:absolute; top:262px; left:765px; visibility:hidden;"
+2525c2902
+< 	style="position:absolute; top:750px; left:970px; visibility:hidden;"
+---
+> 	style="position:absolute; top:750px; left:715px; visibility:hidden;"
+2543c2920
+< 	style="position:absolute; top:188px; left:1005px;"
+---
+> 	style="position:absolute; top:188px; left:740px;"
+2558a2936,3235
+> <!-- Elemental Master -->
+> 
+> <table class="job" id="BMAS"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:114px; left:935px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_sag.png'); background-position:0px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'BMAS')"
+> 	onmouseout="msout()">
+> 魔法本修練
+> </span>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="TDRV"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:188px; left:960px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_ele.png'); background-position:-360px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'TDRV')"
+> 	onmouseout="msout()">
+> テラドライブ
+> </span>
+> </td></tr>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="LLND"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:262px; left:960px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_ele.png'); background-position:-330px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'LLND')"
+> 	onmouseout="msout()">
+> ライトニングランド
+> </span>
+> </td></tr>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="DSTR"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:336px; left:960px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_ele.png'); background-position:-300px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'DSTR')"
+> 	onmouseout="msout()">
+> ダイヤモンドストーム
+> </span>
+> </td></tr>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="CNGF"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:410px; left:960px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_ele.png'); background-position:-270px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'CNGF')"
+> 	onmouseout="msout()">
+> コンフラグレーション
+> </span>
+> </td></tr>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="VSWP"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:484px; left:960px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_soc.png'); background-position:-150px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'VSWP')"
+> 	onmouseout="msout()">
+> ベナムスワンプ
+> </span>
+> </td></tr>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="SENC"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:572px; left:960px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_soc.png'); background-position:-210px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'SENC')"
+> 	onmouseout="msout()">
+> スペルエンチャンティング
+> </span>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="ACTB"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:624px; left:985px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_pro.png'); background-position:-60px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'ACTB')"
+> 	onmouseout="msout()">
+> アクティビティバーン
+> </span>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="INCA"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:675px; left:1010px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_pro.png'); background-position:-60px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'INCA')"
+> 	onmouseout="msout()">
+> インクリーシング
+> </span>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="EMAS"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:77px; left:1120px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_ele.png'); background-position:-210px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'EMAS')"
+> 	onmouseout="msout()">
+> エレメンタルマスタリー
+> </span>
+> </td></tr>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="ELVE"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:114px; left:1145px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_xxx.png'); background-position:-240px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'ELVE')"
+> 	onmouseout="msout()">
+> エレメンタルヴェール
+> </span>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="SMTE"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:225px; left:1145px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_ele.png'); background-position:-90px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'SMTE')"
+> 	onmouseout="msout()">
+> サモンテレモトゥス
+> </span>
+> </td></tr>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="SMPR"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:299px; left:1145px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_ele.png'); background-position:-60px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'SMPR')"
+> 	onmouseout="msout()">
+> サモンプロセラ
+> </span>
+> </td></tr>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="SMTV"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:373px; left:1145px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_ele.png'); background-position:-30px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'SMTV')"
+> 	onmouseout="msout()">
+> サモンティルビオ
+> </span>
+> </td></tr>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="SMDR"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:447px; left:1145px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_ele.png'); background-position:0px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'SMDR')"
+> 	onmouseout="msout()">
+> サモンアルドール
+> </span>
+> </td></tr>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="SMTP"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:530px; left:1145px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_soc.png'); background-position:-180px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'SMTP')"
+> 	onmouseout="msout()">
+> サモンサーペンス
+> </span>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+> 
+> <table class="job" id="EBST"
+> 	cellspacing=0 cellpadding=0 width=130 height=15 border=0
+> 	style="position:absolute; top:572px; left:1170px;"
+> 	onclick="msclk(this.id,event.clientX,this.style.left)"
+> 	onmousewheel="mswhl(this.id)">
+> <tr><td rowspan=2 width=26
+> 	style="background-image:url('img/icon_ele.png'); background-position:-150px;">
+> </td>
+> <td width=114 height=16 align=center>
+> <span class="help"
+> 	onmouseover="msovr(event.clientX,event.clientY,'EBST')"
+> 	onmouseout="msout()">
+> エレメンタルバスター
+> </span>
+> <tr><td width=114 height=12></td></tr>
+> </table>
+2563c3240
+< <div id="dummy" style="position:absolute; top:0px; left:0px; width:1200px; height:800px; z-index:-1;"></div>
+---
+> <div id="dummy" style="position:absolute; top:0px; left:0px; width:1324px; height:850px; z-index:-1;"></div>

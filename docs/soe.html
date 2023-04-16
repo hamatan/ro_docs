@@ -1,7 +1,8 @@
 <html>
 <head>
+
 <meta name="robots" content="noindex,nofollow,noarchive">
-<link id="csslink" rel=stylesheet href="./dat/skill.css" type="text/css">
+<link id="csslink" rel=stylesheet href="dat/skill.css" type="text/css">
 <title>Magician - Sage - Professor - Sorcerer with Elemental</title>
 <style>
 body{
@@ -10,8 +11,8 @@ body{
 	background-repeat:no-repeat;
 }
 </style>
-<script language="JavaScript" src="./dat/skill4.js"></script>
-<script language="JavaScript" src="./dat/skilllist2.js"></script>
+<script language="JavaScript" src="dat/skill4.js"></script>
+<script language="JavaScript" src="dat/skilllist2.js"></script>
 <script language="JavaScript">
 
 var CBLT_P = FBLL_P = FBLT_P = FRDV_P
@@ -87,7 +88,7 @@ var DBCS_M = 5;
 
 var FRWK_M = 5;
 var ELWK_M = 5;
-var SFST_M = 10;
+var SFST_M = 5;
 var BCMX_M = 5;
 var PSYW_M = 5;
 var CLKL_M = 5;
@@ -661,7 +662,7 @@ function ELWK_F(){
 	}
 }
 function SFST_F(){
-	Point(SFST_P,10, "SFST");
+	Point(SFST_P,5, "SFST");
 	if(ATSP_P<4 && SFST_P>0){
 		ATSP_P=4; Visible("SFST"); ATSP_F();
 	}
@@ -957,7 +958,7 @@ function setPoint(parts,point){
 	if(parts == "DBCS") { if(point>=0 && point<=5 ) DBCS_P=point; DBCS_F(); }
 	if(parts == "FRWK") { if(point>=0 && point<=5 ) FRWK_P=point; FRWK_F(); }
 	if(parts == "ELWK") { if(point>=0 && point<=5 ) ELWK_P=point; ELWK_F(); }
-	if(parts == "SFST") { if(point>=0 && point<=10 ) SFST_P=point; SFST_F(); }
+	if(parts == "SFST") { if(point>=0 && point<=5 ) SFST_P=point; SFST_F(); }
 	if(parts == "BCMX") { if(point>=0 && point<=5 ) BCMX_P=point; BCMX_F(); }
 	if(parts == "PSYW") { if(point>=0 && point<=5 ) PSYW_P=point; PSYW_F(); }
 	if(parts == "CLKL") { if(point>=0 && point<=5 ) CLKL_P=point; CLKL_F(); }
